@@ -96,62 +96,61 @@
 
 @section('content')
 <div class="row">
-    <div class="col-xl-8 mb-5 mb-xl-0">
-      <div class="card bg-gradient-default shadow">
-        <div class="card-header bg-transparent">
+
+    <div class="col-xl-12 order-xl-1">
+      <div class="card bg-secondary shadow">
+        <div class="card-header bg-white border-0">
           <div class="row align-items-center">
-            <div class="col">
-              <h6 class="text-uppercase text-light ls-1 mb-1">Overview</h6>
-              <h2 class="text-white mb-0">Sales value</h2>
+            <div class="col-8">
+              <h3 class="mb-0">My account</h3>
             </div>
-            <div class="col">
-              <ul class="nav nav-pills justify-content-end">
-                <li class="nav-item mr-2 mr-md-0" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 10, 30, 15, 40, 20, 60, 60]}]}}' data-prefix="$" data-suffix="k">
-                  <a href="#" class="nav-link py-2 px-3 active" data-toggle="tab">
-                    <span class="d-none d-md-block">Month</span>
-                    <span class="d-md-none">M</span>
-                  </a>
-                </li>
-                <li class="nav-item" data-toggle="chart" data-target="#chart-sales" data-update='{"data":{"datasets":[{"data":[0, 20, 5, 25, 10, 30, 15, 40, 40]}]}}' data-prefix="$" data-suffix="k">
-                  <a href="#" class="nav-link py-2 px-3" data-toggle="tab">
-                    <span class="d-none d-md-block">Week</span>
-                    <span class="d-md-none">W</span>
-                  </a>
-                </li>
-              </ul>
+            <div class="col-4 text-right">
+              <a href="#!" class="btn btn-sm btn-primary">Settings</a>
             </div>
           </div>
         </div>
         <div class="card-body">
-          <!-- Chart -->
-          <div class="chart">
-            <!-- Chart wrapper -->
-            <canvas id="chart-sales" class="chart-canvas"></canvas>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-xl-4">
-      <div class="card shadow">
-        <div class="card-header bg-transparent">
-          <div class="row align-items-center">
-            <div class="col">
-              <h6 class="text-uppercase text-muted ls-1 mb-1">Performance</h6>
-              <h2 class="mb-0">Total orders</h2>
+          <form>
+            <h6 class="heading-small text-muted mb-4">User information</h6>
+            <div class="pl-lg-4">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-pemasukan">Pemasukan</label>
+                    <input type="text" id="input-pemasukan" class="form-control form-control-alternative" placeholder="pemasukan">
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <label class="form-control-label" for="input-pengeluaran">Pengeluaran</label>
+                    <input type="pengeluaran" id="input-pengeluaran" class="form-control form-control-alternative" placeholder="pengeluaran">
+                  </div>
+                </div>
+              </div>
+              {{-- <div class="row">
+                <div class="col-lg-6">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-first-name">First name</label>
+                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" >
+                  </div>
+                </div>
+                <div class="col-lg-6">
+                  <div class="form-group focused">
+                    <label class="form-control-label" for="input-last-name">Last name</label>
+                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" >
+                  </div>
+                </div>
+              </div> --}}
             </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <!-- Chart -->
-          <div class="chart">
-            <canvas id="chart-orders" class="chart-canvas"></canvas>
-          </div>
+            <hr class="my-4">
+
+          </form>
         </div>
       </div>
     </div>
   </div>
-  <div class="row mt-5">
-    <div class="col-xl-8 mb-5 mb-xl-0">
+<div class="row mt-5">
+    <div class="col-xl-12 mb-5 mb-xl-0">
       <div class="card shadow">
         <div class="card-header border-0">
           <div class="row align-items-center">
@@ -169,7 +168,7 @@
             <thead class="thead-light">
               <tr>
                 <th scope="col">Page name</th>
-                <th scope="col">Visitors</th>
+                <th scope="col">Pemasukan</th>
                 <th scope="col">Unique users</th>
                 <th scope="col">Bounce rate</th>
               </tr>
@@ -180,77 +179,30 @@
                   /argon/
                 </th>
                 <td>
-                  4,569
+                        <div class="input-group input-group-alternative">
+                                <div class="input-group-prepend">
+
+                                  <span class="input-group-text"> <button type="submit" class="btn btn-sm btn-primary" id="buttonku">button</button></span>
+                                </div>
+                                <input class="form-control" id="inputku" placeholder="Email" type="email" disabled>
+                              </div>
                 </td>
                 <td>
                   340
                 </td>
                 <td>
-                  <i class="fas fa-arrow-up text-success mr-3"></i> 46,53%
+                    <div class="form-group focused">
+                        <input type="text" id="input-pemasukan" class="form-control form-control-alternative" placeholder="pemasukan">
+                      </div>
                 </td>
               </tr>
-              <tr>
-                <th scope="row">
-                  /argon/index.html
-                </th>
-                <td>
-                  3,985
-                </td>
-                <td>
-                  319
-                </td>
-                <td>
-                  <i class="fas fa-arrow-down text-warning mr-3"></i> 46,53%
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  /argon/charts.html
-                </th>
-                <td>
-                  3,513
-                </td>
-                <td>
-                  294
-                </td>
-                <td>
-                  <i class="fas fa-arrow-down text-warning mr-3"></i> 36,49%
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  /argon/tables.html
-                </th>
-                <td>
-                  2,050
-                </td>
-                <td>
-                  147
-                </td>
-                <td>
-                  <i class="fas fa-arrow-up text-success mr-3"></i> 50,87%
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  /argon/profile.html
-                </th>
-                <td>
-                  1,795
-                </td>
-                <td>
-                  190
-                </td>
-                <td>
-                  <i class="fas fa-arrow-down text-danger mr-3"></i> 46,53%
-                </td>
-              </tr>
+
             </tbody>
           </table>
         </div>
       </div>
     </div>
-    <div class="col-xl-4">
+    {{-- <div class="col-xl-4">
       <div class="card shadow">
         <div class="card-header border-0">
           <div class="row align-items-center">
@@ -367,10 +319,25 @@
           </table>
         </div>
       </div>
-    </div>
-  </div>
+    </div> --}}
+</div>
 @endsection
+@section('script')
+<script>
+$(document).ready(function(){
+    $('#buttonku').on('click', function(event){
+        event.preventDefault();
+$("#inputku").attr('disabled', !$("#inputku").attr('disabled'));
 
+    });
+});
+
+
+function removeatr(){
+
+}
+</script>
+@endsection
 
 
 

@@ -23,6 +23,7 @@
     Argon Dashboard - Free Dashboard for Bootstrap 4 by Creative Tim
   </title>
   <!-- Favicon -->
+  <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
   <link href="{{ asset('assets/img/brand/favicon.png') }}" rel="icon" type="image/png">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
@@ -63,6 +64,8 @@
         application: "argon-dashboard-free"
       });
   </script>
+
+  @yield('script')
 </body>
 
 </html>
