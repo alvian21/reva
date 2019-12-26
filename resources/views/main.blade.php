@@ -18,6 +18,7 @@
 
 <head>
   <meta charset="utf-8" />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>
     Argon Dashboard - Free Dashboard for Bootstrap 4 by Creative Tim
@@ -56,6 +57,8 @@
   <script src="{{ asset('assets/js/plugins/chart.js/dist/Chart.extension.js') }}"></script>
   <!--   Argon JS   -->
   <script src="{{ asset('assets/js/argon-dashboard.min.js?v=1.1.0') }}"></script>
+  {{-- <script src="http://code.jquery.com/jquery-1.10.2.js"></script> --}}
+  {{-- <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script> --}}
   <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
   <script>
     window.TrackJS &&

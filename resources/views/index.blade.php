@@ -116,7 +116,7 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group focused">
-                    <label class="form-control-label" for="input-pemasukan">Pemasukan</label>
+                    <label class="form-control-label" for="input-pemasukan"  >Pemasukan</label>
                     <input type="text" id="input-pemasukan" class="form-control form-control-alternative" placeholder="pemasukan">
                   </div>
                 </div>
@@ -332,9 +332,15 @@ $("#inputku").attr('disabled', !$("#inputku").attr('disabled'));
     });
 });
 
+</script>
 
-function removeatr(){
+<script>
+function MouseOver(elem) {
+  elem.style.display = "none";
+}
 
+function MouseOut(elem) {
+  elem.style.color = "black";
 }
 </script>
 @endsection
