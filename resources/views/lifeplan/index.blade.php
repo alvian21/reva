@@ -21,8 +21,8 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group focused">
-                    <label class="form-control-label" for="input-username">Nama LifePlan</label>
-                    <input type="text" id="input-username" class="form-control form-control-alternative" >
+                    <label class="form-control-label" for="namalifeplan">Nama LifePlan</label>
+                    <input type="text" id="namalifeplan" class="form-control form-control-alternative" >
                   </div>
                 </div>
                 <div class="col-lg-6">
@@ -36,7 +36,7 @@
                 <div class="col-lg-6">
                   <div class="form-group focused">
                     <label class="form-control-label" for="biaya">Biaya</label>
-                    <input type="number" id="biaya" class="form-control form-control-alternative"  >
+                    <input type="text" id="biaya" class="form-control form-control-alternative"  >
                   </div>
                 </div>
                 <div class="col-lg-6">
@@ -102,13 +102,8 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
         <div class="modal-body">
+            <form action="">
             <table class="profit-loss report-table table" id="date-profit-lost">
                 <thead class="report-header">
                     <tr>
@@ -121,21 +116,73 @@
                 </thead>
                 <tbody>
                         <tr>
-                                <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
-                                   Diskon
+                              <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
+                                  Nama LifePlan
                                 </td>
                                 <td class="report-subtotal text-right" id="assets-type-1-total-data">
                                 </td>
-                                <td class="border-top-thin" style="padding-left:80px;">
-                                    50000
+                                <td class="border-top-thin" id="hasilnama" style="padding-left:80px;">
+
                                 </td>
                          </tr>
+                           <tr>
+                                <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
+                                    Biaya saat ini
+                                  </td>
+                                  <td class="report-subtotal text-right" id="assets-type-1-total-data">
+                                  </td>
+                                  <td class="border-top-thin" id="hasilbiaya" style="padding-left:80px;">
+
+                                  </td>
+                           </tr>
+                           <tr>
+                                <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
+                                    Tercapai Dalam
+                                  </td>
+                                  <td class="report-subtotal text-right" id="assets-type-1-total-data">
+                                  </td>
+                                  <td class="border-top-thin" id="hasiltercapai" style="padding-left:80px;">
+                                      50000
+                                  </td>
+                           </tr>
+
+                           <tr>
+                                <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
+                                   Inflasi
+                                  </td>
+                                  <td class="report-subtotal text-right" id="assets-type-1-total-data">
+                                  </td>
+                                  <td class="border-top-thin" id="hasilinflasi" style="padding-left:80px;">
+
+                                  </td>
+                           </tr>
+                           <tr>
+                                <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
+                               Biaya yang akan datang
+                                </td>
+                                  <td class="report-subtotal text-right" id="assets-type-1-total-data">
+                                  </td>
+                                  <td class="border-top-thin" id="hasildatang" style="padding-left:80px;">
+
+                                  </td>
+                           </tr>
+                           <tr>
+                                <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
+                                  Perkiraan perbulan
+                                  </td>
+                                  <td class="report-subtotal text-right" id="assets-type-1-total-data">
+                                  </td>
+                                  <td class="border-top-thin" id="perbulan" style="padding-left:80px;">
+
+                                  </td>
+                           </tr>
                 </tbody>
             </table>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           <button type="button" class="btn btn-primary">Simpan</button>
+        </form>
         </div>
       </div>
     </div>
@@ -144,6 +191,7 @@
 
 
 @section('script')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 <script>
 $(document).ready(function(){
     var data;
@@ -165,18 +213,27 @@ $(document).ready(function(){
        });
        $('#hitung').on('click', function(){
                 var biaya = $('#biaya').val();
+                var nama = $('#namalifeplan').val();
                 ajax();
                 $.ajax({
                     url: '/dashboard/lifeplan/hitung',
                     method: 'POST',
                     data: {
                         'hitung':1,
+                        'nama':nama,
                         'biaya':biaya,
                         'bulan':bulan,
                     },
                     success:function(data){
                         $('#exampleModal').modal('show');
-                            console.log(data);
+                        $('#hasilnama').text(data['nama']);
+                        $('#hasilbiaya').text(data['biaya']);
+                        $('#hasiltercapai').text(data['bulan']+' bulan');
+                        $('#hasilinflasi').text(data['inflasi']);
+                        $('#hasildatang').text(data['biayadatang']);
+                        $('#perbulan').text(data['perbulan']);
+
+
                     }
                 });
        });
@@ -188,6 +245,9 @@ $(document).ready(function(){
                     }
                 });
        }
+
+
+       $( '#biaya' ).mask('000.000.000', {reverse: true});
 });
 </script>
 @endsection
