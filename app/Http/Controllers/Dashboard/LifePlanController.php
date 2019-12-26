@@ -35,10 +35,24 @@ class LifePlanController extends Controller
         if($request->get('hitung')){
             $bulan = $request->get('bulan');
             $bulan = $bulan/12;
-            $biaya = $request->get('biaya');
+            $biaya = str_replace('.','',$request->get('biaya'));
             $hitung = new hitung;
-            $hitung = $hitung->futureku($bulan,$biaya,'future');
-            return $hitung;
+            $hitungdatang = $hitung->futureku($bulan,$biaya,'future');
+            $hitung = $hitungdatang/$request->get('bulan');
+            $hitung = round($hitung);
+            $hitung = intval($hitung);
+            $rupiah = "Rp ".number_format($hitung,2,',','.');
+            $biaya = "Rp ".number_format($biaya,2,',','.');
+            $datang = round($hitungdatang);
+            $datang = "Rp ".number_format($datang,2,',','.');
+            $array =   array('bulan' => $request->get('bulan'),
+                            'biaya' => $biaya,
+                            'inflasi' => '6%',
+                            'perbulan' => $rupiah,
+                            'nama' => $request->get('nama'),
+                            'biayadatang' => $datang
+                     );
+            return $array;
         }
     }
 }
