@@ -121,7 +121,7 @@
                                 </td>
                                 <td class="report-subtotal text-right" id="assets-type-1-total-data">
                                 </td>
-                                <td class="border-top-thin" id="hasilnama" style="padding-left:80px;">
+                                <td class="border-top-thin" id="hasilnama" name="hasilnama" style="padding-left:80px;">
 
                                 </td>
                          </tr>
@@ -181,7 +181,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Simpan</button>
+          <button type="button" class="btn btn-primary" id="simpanlife">Simpan</button>
         </form>
         </div>
       </div>
@@ -195,6 +195,7 @@
 <script>
 $(document).ready(function(){
     var data;
+    var hasil;
     var bulan;
        $('#month').on('change', function(){
             data = $(this).val();
@@ -225,6 +226,7 @@ $(document).ready(function(){
                         'bulan':bulan,
                     },
                     success:function(data){
+                        hasil = data;
                         $('#exampleModal').modal('show');
                         $('#hasilnama').text(data['nama']);
                         $('#hasilbiaya').text(data['biaya']);
@@ -248,6 +250,19 @@ $(document).ready(function(){
 
 
        $( '#biaya' ).mask('000.000.000', {reverse: true});
+
+       $('#simpanlife').on('click', function() {
+                ajax();
+                $.ajax({
+                    url: '/dashboard/lifeplan/save',
+                    method: 'POST',
+                    data: hasil,
+                    success:function(data){
+                       
+                    }
+
+                });
+       });
 });
 </script>
 @endsection

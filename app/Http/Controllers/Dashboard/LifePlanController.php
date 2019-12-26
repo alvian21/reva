@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use DateTime;
 use Illuminate\Http\Request;
+use App\Lifeplan;
 use App\CustomClass\hitung;
 
 class LifePlanController extends Controller
 {
+    var $save;
     public function index()
     {
         return view('lifeplan.index');
@@ -45,14 +47,22 @@ class LifePlanController extends Controller
             $biaya = "Rp ".number_format($biaya,2,',','.');
             $datang = round($hitungdatang);
             $datang = "Rp ".number_format($datang,2,',','.');
-            $array =   array('bulan' => $request->get('bulan'),
+            $this->save =   array('bulan' => $request->get('bulan'),
                             'biaya' => $biaya,
                             'inflasi' => '6%',
                             'perbulan' => $rupiah,
                             'nama' => $request->get('nama'),
                             'biayadatang' => $datang
                      );
-            return $array;
+            return $this->save;
+
+
         }
+    }
+
+
+    public function savedata(Request $request)
+    {
+        
     }
 }

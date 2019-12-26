@@ -6,5 +6,6 @@ Route::group(['prefix' => 'dashboard',
 
     Route::get('/lifeplan','LifePlanController@index')->name('lifeplan');
     Route::post('/lifeplan/fetch','LifePlanController@fetch')->name('fetch');
-    Route::post('/lifeplan/hitung','LifePlanController@hitung')->name('fetch');
+    Route::post('/lifeplan/hitung','LifePlanController@hitung');
+    Route::post('/lifeplan/save','LifePlanController@savedata');
 });
