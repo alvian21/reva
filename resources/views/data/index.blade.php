@@ -31,7 +31,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                       <a class="dropdown-item" href="#">Detail</a>
-                      <a class="dropdown-item" href="#">Delete</a>
+                      <button class="dropdown-item delete" data-id="{{ $row->id }}">Delete</button>
                     </div>
                   </div>
                 </td>
@@ -44,4 +44,36 @@
     </div>
   </div>
 
+@endsection
+@section('script')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+$(document).ready(function(){
+        $('.delete').on('click', function(){
+                var id = $(this).data('id');
+                swal({
+                    title: "Apa kamu yakin?",
+                    text: "Setelah dihapus, Anda tidak akan dapat memulihkan FilePLan ini!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                    })
+                    .then((willDelete) => {
+                    if (willDelete) {
+                        $.ajax({
+                            url: '/dashboard/data/delete',
+                            method: 'GET',
+                            data: {'delete':1,
+                                    'id':id
+                            },
+                            success:function(data){
+                                swal("Berhasil", "LifePlan berhasil dihapus", "success");
+                                window.setTimeout(function(){window.location.reload()}, 2000);
+                            }
+                        });
+                    }
+                 });
+        });
+});
+</script>
 @endsection

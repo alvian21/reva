@@ -8,6 +8,7 @@ Route::group(['prefix' => 'dashboard',
 
     Route::get('/','DashboardController@index');
     Route::get('/data','DataController@index')->name('data');
+    Route::get('/data/delete','DataController@delete');
     Route::get('/lifeplan','LifePlanController@index')->name('lifeplan');
     Route::post('/lifeplan/fetch','LifePlanController@fetch')->name('fetch');
     Route::post('/lifeplan/hitung','LifePlanController@hitung');

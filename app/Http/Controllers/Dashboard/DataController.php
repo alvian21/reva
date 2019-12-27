@@ -13,4 +13,12 @@ class DataController extends Controller
         $data = Lifeplan::all();
         return view('data.index',['data'=>$data]);
     }
+
+    public function delete(Request $request)
+    {
+        if($request->get('delete')){
+            $data = Lifeplan::find($request->get('id'));
+            $data->delete();
+        }
+    }
 }
