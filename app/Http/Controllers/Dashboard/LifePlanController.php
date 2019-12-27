@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use DateTime;
 use Illuminate\Http\Request;
 use App\Lifeplan;
+use Illuminate\Support\Facades\Auth;
 use App\CustomClass\hitung;
 
 class LifePlanController extends Controller
@@ -63,7 +64,16 @@ class LifePlanController extends Controller
 
     public function savedata(Request $request)
     {
+        $userid = Auth::user()->id;
         $plan = new Lifeplan;
-        
+        $plan->user_id = $userid;
+        $plan->name = $request->get('nama');
+        $plan->cost = $request->get('biaya');
+        $plan->month = $request->get('bulan');
+        $plan->inflation = $request->get('inflasi');
+        $plan->per_month = $request->get('perbulan');
+        $plan->upcoming_costs = $request->get('biayadatang');
+        $plan->save();
+
     }
 }

@@ -9,7 +9,7 @@
             <div class="col-8">
               <h3 class="mb-0">LifePlan</h3>
             </div>
-           
+
           </div>
         </div>
         <div class="card-body">
@@ -256,7 +256,7 @@ $(document).ready(function(){
                     method: 'POST',
                     data: hasil,
                     success:function(data){
-
+                        console.log(data);
                     }
 
                 });
