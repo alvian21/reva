@@ -13,7 +13,7 @@
           </div>
         </div>
         <div class="card-body">
-          <form>
+          <form id="formlifeplan">
 
             <div class="pl-lg-4">
               <div class="row">
@@ -190,6 +190,7 @@
 
 @section('script')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 $(document).ready(function(){
     var data;
@@ -213,7 +214,12 @@ $(document).ready(function(){
        $('#hitung').on('click', function(){
                 var biaya = $('#biaya').val();
                 var nama = $('#namalifeplan').val();
-                ajax();
+                if(biaya == ''){
+                    swal("Gagal", "Isi form biaya", "error");
+                }else if(nama == ''){
+                    swal("Gagal", "Isi form nama", "error");
+                }else{
+                    ajax();
                 $.ajax({
                     url: '/dashboard/lifeplan/hitung',
                     method: 'POST',
@@ -236,6 +242,8 @@ $(document).ready(function(){
 
                     }
                 });
+                }
+
        });
        function ajax()
        {
@@ -250,15 +258,17 @@ $(document).ready(function(){
        $( '#biaya' ).mask('000.000.000', {reverse: true});
 
        $('#simpanlife').on('click', function() {
+
                 ajax();
                 $.ajax({
                     url: '/dashboard/lifeplan/save',
                     method: 'POST',
                     data: hasil,
                     success:function(data){
-                        console.log(data);
+                        $('#formlifeplan')[0].reset();
+                        $('#exampleModal').modal('hide');
+                        swal("Success", "LifePlan Berhasil di Simpan", "success");
                     }
-
                 });
        });
 });
