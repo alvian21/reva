@@ -1,5 +1,7 @@
 <?php
 Route::get('/','Dashboard\LoginController@index');
+Route::get('/register','Dashboard\LoginController@indexregister')->name('indexreg');
+Route::post('/register','Dashboard\LoginController@register')->name('register');
 Route::post('/','Dashboard\LoginController@login')->name('login');
 Route::group(['prefix' => 'dashboard',
                 'namespace' => 'Dashboard',

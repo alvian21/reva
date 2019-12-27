@@ -32,4 +32,20 @@ class LoginController extends Controller
         Auth::logout();
         return redirect('/');
     }
+
+    public function indexregister()
+    {
+        return view('auth.register');
+    }
+
+    public function register(Request $request)
+    {
+        $user = new User;
+        $user->name = $request->get('name');
+        $user->email = $request->get('email');
+        $user->password = bcrypt($request->get('password'));
+        $user->save();
+
+        return redirect('/');
+    }
 }
