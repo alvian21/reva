@@ -74,6 +74,7 @@ class LifePlanController extends Controller
         $plan->per_month = $request->get('perbulan');
         $plan->upcoming_costs = $request->get('biayadatang');
         $plan->save();
-
     }
+
+    
 }
