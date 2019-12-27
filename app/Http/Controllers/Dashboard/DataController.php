@@ -5,12 +5,13 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Lifeplan;
+use Illuminate\Support\Facades\Auth;
 
 class DataController extends Controller
 {
     public function index()
-    {
-        $data = Lifeplan::all();
+    {   $user = Auth::user()->id;
+        $data = Lifeplan::all()->where('user_id',$user);
         return view('data.index',['data'=>$data]);
     }
 
