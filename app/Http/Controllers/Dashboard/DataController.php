@@ -21,4 +21,11 @@ class DataController extends Controller
             $data->delete();
         }
     }
+
+
+    public function detail($id)
+    {
+        $data = Lifeplan::find($id);
+        return view('data.detail',['data'=>$data]);
+    }
 }
