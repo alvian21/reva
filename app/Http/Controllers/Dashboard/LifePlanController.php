@@ -63,6 +63,7 @@ class LifePlanController extends Controller
 
     public function savedata(Request $request)
     {
+        $plan = new Lifeplan;
         
     }
 }

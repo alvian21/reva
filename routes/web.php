@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 require 'dashboard.php';
 Route::view('/dashboard','index');

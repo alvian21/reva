@@ -1,4 +1,6 @@
 <?php
+Route::get('/','Dashboard\LoginController@index');
+Route::post('/','Dashboard\LoginController@login')->name('login');
 Route::group(['prefix' => 'dashboard',
                 'namespace' => 'Dashboard'
             ], function () {
