@@ -20,13 +20,13 @@
                 <div class="col-lg-6">
                   <div class="form-group focused">
                     <label class="form-control-label" for="namalifeplan">Nama LifePlan</label>
-                    <input type="text" id="namalifeplan" class="form-control form-control-alternative" >
+                    <input type="text" id="namalifeplan" class="form-control form-control-alternative" required >
                   </div>
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-email">Target Waktu LifePlan</label>
-                    <input type="month" id="month" class="form-control form-control-alternative" >
+                    <input type="month" id="month" class="form-control form-control-alternative" required >
                   </div>
                 </div>
               </div>
@@ -34,7 +34,7 @@
                 <div class="col-lg-6">
                   <div class="form-group focused">
                     <label class="form-control-label" for="biaya">Biaya</label>
-                    <input type="text" id="biaya" class="form-control form-control-alternative"  >
+                    <input type="text" id="biaya" class="form-control form-control-alternative" required  >
                   </div>
                 </div>
                 <div class="col-lg-6">
@@ -212,13 +212,17 @@ $(document).ready(function(){
                 });
        });
        $('#hitung').on('click', function(){
+                var month = $('#month').val();
                 var biaya = $('#biaya').val();
                 var nama = $('#namalifeplan').val();
-                if(biaya == ''){
-                    swal("Gagal", "Isi form biaya", "error");
-                }else if(nama == ''){
+                if(nama == ''){
                     swal("Gagal", "Isi form nama", "error");
-                }else{
+                }else if(month == ''){
+                    swal("Gagal", "Pilih bulan dan tahun", "error");
+                }else  if(biaya == ''){
+                    swal("Gagal", "Isi form biaya", "error");
+                }
+                else{
                     ajax();
                 $.ajax({
                     url: '/dashboard/lifeplan/hitung',
@@ -253,8 +257,6 @@ $(document).ready(function(){
                     }
                 });
        }
-
-
        $( '#biaya' ).mask('000.000.000', {reverse: true});
 
        $('#simpanlife').on('click', function() {
