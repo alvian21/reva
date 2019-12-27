@@ -14,4 +14,4 @@
 
 
 require 'dashboard.php';
-Route::view('/dashboard','index');
+

@@ -75,6 +75,4 @@ class LifePlanController extends Controller
         $plan->upcoming_costs = $request->get('biayadatang');
         $plan->save();
     }
-
-    
 }
