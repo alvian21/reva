@@ -30,7 +30,7 @@
                       <i class="fas fa-ellipsis-v"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                      <a class="dropdown-item" href="#">Detail</a>
+                      <a class="dropdown-item" href="{{ Route('detail',[$row->id]) }}">Detail</a>
                       <button class="dropdown-item delete" data-id="{{ $row->id }}">Delete</button>
                     </div>
                   </div>
