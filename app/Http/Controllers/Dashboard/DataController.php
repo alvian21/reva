@@ -26,7 +26,11 @@ class DataController extends Controller
 
     public function detail($id)
     {
-        $data = Lifeplan::find($id);
+        $user = Auth::user()->id;
+        $data = Lifeplan::where('user_id',$user)->where('id',$id)->first();
+        if($data == null){
+            return redirect('/dashboard/data');
+        }
         return view('data.detail',['data'=>$data]);
     }
 }
