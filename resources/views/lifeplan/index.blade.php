@@ -203,7 +203,7 @@ $(document).ready(function(){
       $dp1.datepicker({
         changeYear: true,
         changeMonth: true,
-          minDate:0,
+        minDate: '0',
         dateFormat: "yy-m",
         yearRange: "-100:+20",
         onSelect: function (selectedDate) {
@@ -217,7 +217,14 @@ $(document).ready(function(){
                     },
                     success:function(response){
                         bulan = response;
-                       $('#tercapai').val(response+' bulan');
+                        if(response < 1){
+                            $('#hitung').attr('disabled','disabled');
+                            swal("Warning", "minimal 1 bulan", "info");
+                        }else{
+                            $('#hitung').removeAttr('disabled');
+                            $('#tercapai').val(response+' bulan');
+                        }
+
                     }
                 });
                 }

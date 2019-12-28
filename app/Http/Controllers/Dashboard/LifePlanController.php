@@ -27,6 +27,7 @@ class LifePlanController extends Controller
           $month1 = date('m',$date);
           $month2 = date('m');
           $diff = (($year1 - $year2) * 12) + ($month1 - $month2);
+          
           echo $diff;
 
         }
