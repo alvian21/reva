@@ -43,7 +43,16 @@
                             {{ $data->cost }}
                       </td>
                </tr>
-
+               <tr>
+                <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
+                  Tercapai Dalam
+                  </td>
+                  <td class="report-subtotal text-right" id="assets-type-1-total-data">
+                  </td>
+                  <td class="border-top-thin" id="hasilbiaya" style="padding-left:80px;">
+                        {{ $data->month }} bulan
+                  </td>
+           </tr>
                <tr>
                     <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
                        Inflasi
