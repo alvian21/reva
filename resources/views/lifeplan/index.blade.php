@@ -26,7 +26,7 @@
                 <div class="col-lg-6">
                   <div class="form-group">
                     <label class="form-control-label" for="input-email">Target Waktu LifePlan</label>
-                    <input type="month" id="month" class="form-control form-control-alternative" required >
+                    <input type="text" id="month" class="form-control form-control-alternative" required >
                   </div>
                 </div>
               </div>
@@ -189,6 +189,8 @@
 
 
 @section('script')
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/smoothness/jquery-ui.css" rel="stylesheet" />
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
@@ -196,21 +198,33 @@ $(document).ready(function(){
     var data;
     var hasil;
     var bulan;
-       $('#month').on('change', function(){
-            data = $(this).val();
-                ajax();
+    var date;
+    var $dp1 = $("#month");
+      $dp1.datepicker({
+        changeYear: true,
+        changeMonth: true,
+          minDate:0,
+        dateFormat: "yy-m",
+        yearRange: "-100:+20",
+        onSelect: function (selectedDate) {
+                    date = selectedDate;
+                    ajax();
                 $.ajax({
                     url: '/dashboard/lifeplan/fetch',
                     method: 'POST',
                     data:{'date': 1,
-                        'data':data
+                        'data':date
                     },
                     success:function(response){
                         bulan = response;
                        $('#tercapai').val(response+' bulan');
                     }
                 });
-       });
+                }
+
+      });
+
+
        $('#hitung').on('click', function(){
                 var month = $('#month').val();
                 var biaya = $('#biaya').val();
