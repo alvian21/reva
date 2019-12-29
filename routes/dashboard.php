@@ -9,6 +9,7 @@ Route::group(['prefix' => 'dashboard',
             ], function () {
 
     Route::get('/','DashboardController@index');
+    Route::get('/deposit','DepositController@index')->name('deposit');
     Route::get('/data','DataController@index')->name('data');
     Route::get('/data/{id}/detail','DataController@detail')->name('detail');
     Route::get('/data/{id}/edit','DataController@getEdit')->name('editdata');

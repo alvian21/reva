@@ -232,7 +232,6 @@ $(document).ready(function(){
 
       });
 
-
        $('#hitung').on('click', function(){
                 var month = $('#month').val();
                 var biaya = $('#biaya').val();
@@ -291,10 +290,8 @@ $(document).ready(function(){
                     method: 'POST',
                     data: hasil,
                     success:function(data){
-
-                        // $('#exampleModal').modal('hide');
-
-                        // swal("Success", "LifePlan Berhasil di Simpan", "success");
+                        $('#exampleModal').modal('hide');
+                        swal("Success", "LifePlan Berhasil di Simpan", "success");
                     }
                 });
        });

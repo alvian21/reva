@@ -14,7 +14,7 @@
         </div>
         <div class="card-body">
           <form id="formlifeplan">
-
+            <input type="hidden" name="id" id="id" value="{{ $data->id }}">
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
@@ -25,16 +25,23 @@
                 </div>
                 <div class="col-lg-6">
                   <div class="form-group">
+                    <?php
+                        $echo = strtotime($data->date);
+                        $echo = date('Y-m', $echo);
+                        ?>
                     <label class="form-control-label" for="input-email">Target Waktu LifePlan</label>
-                    <input type="text" id="month" class="form-control form-control-alternative" required value="">
+                    <input type="text" id="month" class="form-control form-control-alternative" required value="{{ $echo }}">
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group focused">
+                      <?php
+                            $hasil = str_replace('Rp','',$data->cost);
+                        ?>
                     <label class="form-control-label" for="biaya">Biaya</label>
-                    <input type="text" id="biaya" class="form-control form-control-alternative" required  >
+                    <input type="text" id="biaya" class="form-control form-control-alternative" required value="{{ $hasil }}" >
                   </div>
                 </div>
                 <div class="col-lg-6">
