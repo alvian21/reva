@@ -12,6 +12,7 @@ use App\CustomClass\hitung;
 class LifePlanController extends Controller
 {
     var $save;
+    var $tanggal;
     public function index()
     {
         return view('lifeplan.index');
@@ -27,7 +28,7 @@ class LifePlanController extends Controller
           $month1 = date('m',$date);
           $month2 = date('m');
           $diff = (($year1 - $year2) * 12) + ($month1 - $month2);
-          
+
           echo $diff;
 
         }
@@ -49,12 +50,15 @@ class LifePlanController extends Controller
             $biaya = "Rp ".number_format($biaya,2,',','.');
             $datang = round($hitungdatang);
             $datang = "Rp ".number_format($datang,2,',','.');
+            $this->tanggal = $request->get('date');
+            $tanggal = $this->tanggal;
             $this->save =   array('bulan' => $request->get('bulan'),
                             'biaya' => $biaya,
                             'inflasi' => '6%',
                             'perbulan' => $rupiah,
                             'nama' => $request->get('nama'),
-                            'biayadatang' => $datang
+                            'biayadatang' => $datang,
+                            'date' => $tanggal
                      );
             return $this->save;
 
@@ -65,15 +69,22 @@ class LifePlanController extends Controller
 
     public function savedata(Request $request)
     {
+
         $userid = Auth::user()->id;
         $plan = new Lifeplan;
         $plan->user_id = $userid;
         $plan->name = $request->get('nama');
         $plan->cost = $request->get('biaya');
+        $date = strtotime($request->get('date'));
+        $date = date('Y-m-d',$date);
         $plan->month = $request->get('bulan');
+        $plan->date = $date;
         $plan->inflation = $request->get('inflasi');
         $plan->per_month = $request->get('perbulan');
         $plan->upcoming_costs = $request->get('biayadatang');
         $plan->save();
+
+
     }
+
 }

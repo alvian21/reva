@@ -20,6 +20,7 @@ class CreateLifeplansTable extends Migration
             $table->string('name');
             $table->string('cost');
             $table->string('month');
+            $table->date('date');
             $table->string('inflation');
             $table->string('per_month');
             $table->string('upcoming_costs');

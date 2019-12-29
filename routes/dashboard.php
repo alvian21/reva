@@ -11,6 +11,7 @@ Route::group(['prefix' => 'dashboard',
     Route::get('/','DashboardController@index');
     Route::get('/data','DataController@index')->name('data');
     Route::get('/data/{id}/detail','DataController@detail')->name('detail');
+    Route::get('/data/{id}/edit','DataController@getEdit')->name('editdata');
     Route::get('/data/delete','DataController@delete');
     Route::get('/lifeplan','LifePlanController@index')->name('lifeplan');
     Route::post('/lifeplan/fetch','LifePlanController@fetch')->name('fetch');

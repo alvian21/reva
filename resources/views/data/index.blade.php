@@ -31,6 +31,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
                       <a class="dropdown-item" href="{{ Route('detail',[$row->id]) }}">Detail</a>
+                      <a class="dropdown-item" href="{{ Route('editdata',[$row->id]) }}">Edit</a>
                       <button class="dropdown-item delete" data-id="{{ $row->id }}">Delete</button>
                     </div>
                   </div>

@@ -33,4 +33,11 @@ class DataController extends Controller
         }
         return view('data.detail',['data'=>$data]);
     }
+
+
+    public function getEdit($id)
+    {
+        $data = Lifeplan::find($id);
+        return view('data.edit',['data'=>$data]);
+    }
 }
