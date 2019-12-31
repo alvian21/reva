@@ -137,7 +137,7 @@
   </div>
   <!--   Core   -->
   @include('include.script')
-
+  @yield('script')
 </body>
 
 </html>
