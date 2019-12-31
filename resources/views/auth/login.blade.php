@@ -40,7 +40,7 @@
               </div>
 
               <div class="text-center">
-                <button type="submit" name="submit" class="btn btn-primary my-4">Sign in</button>
+                <button type="submit" name="submit" class="btn btn-primary my-4" >Sign in</button>
               </div>
             </form>
           </div>
@@ -56,3 +56,4 @@
       </div>
 
 @endsection
+
