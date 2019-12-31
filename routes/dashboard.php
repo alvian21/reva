@@ -10,6 +10,7 @@ Route::group(['prefix' => 'dashboard',
 
     Route::get('/','DashboardController@index');
     Route::get('/deposit','DepositController@index')->name('deposit');
+    Route::post('/deposit/fetch','DepositController@fetchdata');
     Route::get('/data','DataController@index')->name('data');
     Route::get('/data/{id}/detail','DataController@detail')->name('detail');
     Route::get('/data/{id}/edit','DataController@getEdit')->name('editdata');
@@ -18,5 +19,6 @@ Route::group(['prefix' => 'dashboard',
     Route::post('/lifeplan/fetch','LifePlanController@fetch')->name('fetch');
     Route::post('/lifeplan/hitung','LifePlanController@hitung');
     Route::post('/lifeplan/save','LifePlanController@savedata');
+    Route::get('/date','DepositController@date');
     Route::get('/logout','LoginController@logout')->name('logout');
 });
