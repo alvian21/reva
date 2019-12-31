@@ -72,8 +72,8 @@
                   </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" id="simpanlife">Simpan</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+          <button type="button" class="btn btn-primary" id="tabung">Tabung Sekarang</button>
         </form>
         </div>
       </div>
@@ -109,9 +109,12 @@ $(document).ready(function(){
             if(data == 'null'){
                 swal("error", "Pilih dulu life plannya", "error");
             }else{
+                var id = $('#id').val();
                 $('#exampleModal').modal('show');
-            }
+                $( '#money' ).mask('000.000.000', {reverse: true});
 
+
+            }
         });
     });
 

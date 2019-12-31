@@ -23,6 +23,9 @@ class DepositController extends Controller
         $echo = '';
         $data = Lifeplan::find($request->get('id'));
         $echo .= ' <table class="profit-loss report-table table" id="date-profit-lost">
+
+                <input type="hidden" name="id" id="id" value="'.$data->id.'">
+
         <thead class="report-header">
             <tr>
                 <th colspan="2">
