@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Lifeplan;
+use DateTime;
+use DateInterval;
+use DatePeriod;
 
 class DepositController extends Controller
 {
@@ -15,9 +18,10 @@ class DepositController extends Controller
     }
 
 
-    public function fetchdata()
+    public function fetchdata(Request $request)
     {
         $echo = '';
+        $data = Lifeplan::find($request->get('id'));
         $echo .= ' <table class="profit-loss report-table table" id="date-profit-lost">
         <thead class="report-header">
             <tr>
@@ -36,19 +40,10 @@ class DepositController extends Controller
                         <td class="report-subtotal text-right" id="assets-type-1-total-data">
                         </td>
                         <td class="border-top-thin" id="hasilnama" name="hasilnama" style="padding-left:80px;">
-
+                        '.$data->name.'
                         </td>
                  </tr>
-                   <tr>
-                        <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
-                            Biaya saat ini
-                          </td>
-                          <td class="report-subtotal text-right" id="assets-type-1-total-data">
-                          </td>
-                          <td class="border-top-thin" id="hasilbiaya" style="padding-left:80px;">
 
-                          </td>
-                   </tr>
                    <tr>
                         <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
                             Tercapai Dalam
@@ -56,7 +51,7 @@ class DepositController extends Controller
                           <td class="report-subtotal text-right" id="assets-type-1-total-data">
                           </td>
                           <td class="border-top-thin" id="hasiltercapai" style="padding-left:80px;">
-
+                          '.$data->month.' bulan
                           </td>
                    </tr>
 
@@ -67,7 +62,7 @@ class DepositController extends Controller
                           <td class="report-subtotal text-right" id="assets-type-1-total-data">
                           </td>
                           <td class="border-top-thin" id="hasildatang" style="padding-left:80px;">
-
+                          '.$data->upcoming_costs.'
                           </td>
                    </tr>
                    <tr>
@@ -77,10 +72,26 @@ class DepositController extends Controller
                           <td class="report-subtotal text-right" id="assets-type-1-total-data">
                           </td>
                           <td class="border-top-thin" id="perbulan" style="padding-left:80px;">
-
+                          '.$data->per_month.'
                           </td>
                    </tr>
         </tbody>
     </table>';
+
+
+    echo $echo;
+    }
+
+
+
+    public function date()
+    {
+        $curdate=strtotime('22-12-2011');
+        $mydate=strtotime('10-10-2011');
+
+        if($curdate > $mydate)
+        {
+            echo '<span class="status expired">Expired</span>';
+        }
     }
 }
