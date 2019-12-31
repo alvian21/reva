@@ -53,7 +53,7 @@
       <div class="modal-content">
         <div class="modal-body">
             <form action="">
-            
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -73,8 +73,9 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
 $(document).ready(function(){
+    var data;
     $('#inputGroupSelect01').on('change', function(){
-        var data = $(this).val();
+        data = $(this).val();
         if(data == 'null'){
             $('#rowlife').html('');
         }else{
@@ -88,12 +89,19 @@ $(document).ready(function(){
             }
         });
         }
+            $('#next').on('click', function(){
+            if(data == 'null'){
+                swal("error", "Pilih dulu life plannya", "error");
+            }else{
+                $('#exampleModal').modal('show');
+            }
 
+        });
     });
 
-    $('#next').on('click', function(){
-        $('#exampleModal').modal('show');
-    });
+
+
+
 
     function ajax()
        {

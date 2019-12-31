@@ -21,6 +21,7 @@ class CreateDepositsTable extends Migration
             $table->foreign('lifeplan_id')->references('id')->on('lifeplans')->onDelete('cascade');
             $table->integer('data');
             $table->string('inflation');
+            $table->integer('month');
             $table->timestamps();
         });
     }

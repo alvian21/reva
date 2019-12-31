@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use App\Deposit;
+use App\Lifeplan;
 
 class LoginController extends Controller
 {
@@ -21,7 +23,10 @@ class LoginController extends Controller
 
         if(Auth::attempt(['email' => $email, 'password' => $password])){
             $user = Auth::user();
-
+            $id = $user->id;
+            $life = Lifeplan::all()->where('user_id', $id);
+            $data = Deposit::all()->where('user_id', $id);
+           
             return redirect('/dashboard');
         }
     }
