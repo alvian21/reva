@@ -102,6 +102,7 @@ class DepositController extends Controller
     public function fetchprice(Request $request)
     {
         $data = Lifeplan::find($request->get('id'));
+        $data = str_replace('Rp','',str_replace('.','',str_replace(',00','',$data->upcoming_costs)));
         return $data;
     }
 }
