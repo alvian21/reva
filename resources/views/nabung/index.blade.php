@@ -55,7 +55,7 @@
                 <h2 class="modal-title">Menabung</h2>
             </div>
         <div class="modal-body">
-            <form action="">
+            <form id="menabungku">
                 <div class="form-group">
                     <label for="money">Jumlah uang untuk ditabung</label>
                     <input type="text" class="form-control" id="money" >
@@ -68,7 +68,7 @@
 
                   <div class="form-group">
                     <label for="bulan">Jumlah Bulan</label>
-                    <input type="text" class="form-control" id="bulan" disabled>
+                    <input type="text" class="form-control" id="bulanabung" disabled>
                   </div>
         </div>
         <div class="modal-footer">
@@ -90,7 +90,9 @@
 <script>
 $(document).ready(function(){
     var data;
+    var id;
     $('#inputGroupSelect01').on('change', function(){
+
         data = $(this).val();
         if(data == 'null'){
             $('#rowlife').html('');
@@ -102,6 +104,7 @@ $(document).ready(function(){
             data: {'id':data},
             success:function(data){
                $('#rowlife').html(data);
+                id = $('#id').val();
             }
         });
         }
@@ -109,13 +112,23 @@ $(document).ready(function(){
             if(data == 'null'){
                 swal("error", "Pilih dulu life plannya", "error");
             }else{
-                var id = $('#id').val();
                 $('#exampleModal').modal('show');
-                $( '#money' ).mask('000.000.000', {reverse: true});
+                var money = $('#money').val();
 
+                $.ajax({
+                    url:'',
+                    method: 'POST',
+                    data:{'id':id,
+                            'money':money,
+                    }, success:function(response){
 
+                    }
+                });
             }
         });
+
+
+        $( '#money' ).mask('000.000.000', {reverse: true});
     });
 
 
