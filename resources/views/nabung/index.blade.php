@@ -93,6 +93,7 @@ $(document).ready(function(){
     var id;
     $('#inputGroupSelect01').on('change', function(){
 
+        $('#menabungku')[0].reset();
         data = $(this).val();
         if(data == 'null'){
             $('#rowlife').html('');
@@ -113,18 +114,24 @@ $(document).ready(function(){
                 swal("error", "Pilih dulu life plannya", "error");
             }else{
                 $('#exampleModal').modal('show');
-                var money = $('#money').val();
 
+            }
+             var money;
+            $('#money').on('keyup', function(){
+                money = $(this).val();
                 $.ajax({
                     url:'/dashboard/deposit/fetchprice',
                     method: 'POST',
                     data:{'id':id,
-                            'money':money,
+                        'money':money
                     }, success:function(response){
                         console.log(response);
                     }
                 });
-            }
+
+            });
+
+
         });
 
 
