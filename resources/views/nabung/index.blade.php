@@ -116,12 +116,12 @@ $(document).ready(function(){
                 var money = $('#money').val();
 
                 $.ajax({
-                    url:'',
+                    url:'/dashboard/deposit/fetchprice',
                     method: 'POST',
                     data:{'id':id,
                             'money':money,
                     }, success:function(response){
-
+                        console.log(response);
                     }
                 });
             }
