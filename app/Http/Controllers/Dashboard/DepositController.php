@@ -97,4 +97,11 @@ class DepositController extends Controller
             echo '<span class="status expired">Expired</span>';
         }
     }
+
+
+    public function fetchprice(Request $request)
+    {
+        $data = Lifeplan::find($request->get('id'));
+        return $data;
+    }
 }
