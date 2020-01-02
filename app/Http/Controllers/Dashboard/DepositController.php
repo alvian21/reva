@@ -102,7 +102,16 @@ class DepositController extends Controller
     public function fetchprice(Request $request)
     {
         $data = Lifeplan::find($request->get('id'));
+        $money = str_replace('.','',$request->get('money'));
         $data = str_replace('Rp','',str_replace('.','',str_replace(',00','',$data->upcoming_costs)));
-        return $data;
+        $hasil = $data - $money;
+        $hasil = "Rp ".number_format($hasil,2,',','.');
+
+        if($data > $money){
+            return $hasil;
+        }else{
+            echo 'Maximum';
+        }
+
     }
 }
