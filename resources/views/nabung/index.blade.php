@@ -118,7 +118,6 @@ $(document).ready(function(){
             }
              var money;
             $('#money').on('keyup keydown keypress', function(){
-                // $( '#kurang' ).mask('000.000.000', {reverse: true});
                 money = $(this).val();
                 $.ajax({
                     url:'/dashboard/deposit/fetchprice',
@@ -126,7 +125,9 @@ $(document).ready(function(){
                     data:{'id':id,
                         'money':money
                     }, success:function(response){
-                        $('#kurang').val(response);
+
+                        $('#kurang').val(response['result']);
+                        $('#bulanabung').val(response['month']);
                     }
                 });
 
