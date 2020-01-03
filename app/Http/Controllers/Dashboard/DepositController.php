@@ -103,12 +103,16 @@ class DepositController extends Controller
     {
         $data = Lifeplan::find($request->get('id'));
         $money = str_replace('.','',$request->get('money'));
-        $data = str_replace('Rp','',str_replace('.','',str_replace(',00','',$data->upcoming_costs)));
-        $hasil = $data - $money;
+        $str = str_replace('Rp','',str_replace('.','',str_replace(',00','',$data->upcoming_costs)));
+        $hasil = $str - $money;
         $hasil = "Rp ".number_format($hasil,2,',','.');
+        $array = array(
+            'month' => $data->month,
+            'result' => $hasil
+        );
 
-        if($data > $money){
-            return $hasil;
+        if($str > $money){
+            return $array;
         }else{
             echo 'Maximum';
         }
