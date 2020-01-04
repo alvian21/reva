@@ -104,20 +104,33 @@ class DepositController extends Controller
         $data = Lifeplan::find($request->get('id'));
         $money = str_replace('.','',$request->get('money'));
         $str = str_replace('Rp','',str_replace('.','',str_replace(',00','',$data->upcoming_costs)));
-        $hasil = $str - $money;
+        $hasil = floatval($str) - floatval($money);
         $hasil = "Rp ".number_format($hasil,2,',','.');
 
+        $array = '';
         if($str > $money){
-          return array(
+         $array = array(
                 'month' => $data->month,
-                'result' => $hasil
+                'result' => $hasil,
+                'button'=> false
             );
-        }else{
-            return array(
+        }elseif($str < $money){
+            $array = array(
                 'month' => $data->month,
-                'result' => 'maximum'
+                'result' => 'maximum',
+                'button'=> true
             );
         }
+
+        elseif($str = $money){
+            $array = array(
+                'month' => $data->month,
+                'result' => '0',
+                'button'=> false
+            );
+        }
+
+        return $array;
 
 
     }

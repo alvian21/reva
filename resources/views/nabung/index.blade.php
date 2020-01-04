@@ -127,11 +127,9 @@ $(document).ready(function(){
                     data:{'id':id,
                         'money':money
                     }, success:function(response){
-                         kurang = ((response['result'].replace(/Rp/g,'')).replace(/\./g,"")).replace(/\,00/g,"");
-
 
                         $('#kurang').val(response['result']);
-
+                        $('#tabung').prop('disabled', response['button']);
                         $('#bulanabung').val(response['month']);
                     }
 
