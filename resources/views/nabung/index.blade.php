@@ -117,18 +117,27 @@ $(document).ready(function(){
 
             }
              var money;
+             var kurang;
             $('#money').on('keyup keydown keypress', function(){
                 money = $(this).val();
+                var hasilnya = money.replace(/\./g,"");
                 $.ajax({
                     url:'/dashboard/deposit/fetchprice',
                     method: 'POST',
                     data:{'id':id,
                         'money':money
                     }, success:function(response){
+                         kurang = ((response['result'].replace(/Rp/g,'')).replace(/\./g,"")).replace(/\,00/g,"");
+
+
                         $('#kurang').val(response['result']);
+
                         $('#bulanabung').val(response['month']);
                     }
+
                 });
+
+
 
             });
 
@@ -136,7 +145,7 @@ $(document).ready(function(){
         });
 
 
-        $( '#money' ).mask('000.000.000', {reverse: true});
+        $( '#money' ).mask('000.000.000.000', {reverse: true});
     });
 
 
