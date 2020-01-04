@@ -106,16 +106,19 @@ class DepositController extends Controller
         $str = str_replace('Rp','',str_replace('.','',str_replace(',00','',$data->upcoming_costs)));
         $hasil = $str - $money;
         $hasil = "Rp ".number_format($hasil,2,',','.');
-        $array = array(
-            'month' => $data->month,
-            'result' => $hasil
-        );
 
         if($str > $money){
-            return $array;
+          return array(
+                'month' => $data->month,
+                'result' => $hasil
+            );
         }else{
-            echo 'Maximum';
+            return array(
+                'month' => $data->month,
+                'result' => 'maximum'
+            );
         }
+
 
     }
 }
