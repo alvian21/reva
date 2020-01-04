@@ -125,7 +125,6 @@ $(document).ready(function(){
                     data:{'id':id,
                         'money':money
                     }, success:function(response){
-
                         $('#kurang').val(response['result']);
                         $('#bulanabung').val(response['month']);
                     }
