@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Lifeplan;
+use Illuminate\Support\Facades\Auth;
 use DateTime;
 use DateInterval;
 use DatePeriod;
+use App\Deposit;
 
 class DepositController extends Controller
 {
     public function index()
     {
-        $data = Lifeplan::all();
+        $user = Auth::user()->id;
+        $data = Lifeplan::all()->where('user_id',$user);
         return view('nabung.index',['data'=>$data]);
     }
 
@@ -134,4 +137,27 @@ class DepositController extends Controller
 
 
     }
+
+  public function savedata(Request $request)
+  {
+
+      if($request->get('menabung')){
+        $user = Auth::user();
+        $data = new Deposit;
+        $data->user_id = $user->id;
+        $data->lifeplan_id = $request->get('id');
+        $strmoney = str_replace('.','',$request->get('money'));
+        $data->data = $strmoney;
+        $strkurang = str_replace(',00','',str_replace('.','',str_replace('Rp ','', $request->get('less'))));
+        $data->less = $strkurang;
+        $data->inflation = '6%';
+        $data->month = $request->get('month');
+
+        return $data;
+      }
+
+
+
+  }
+
 }
