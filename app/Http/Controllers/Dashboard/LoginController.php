@@ -26,8 +26,10 @@ class LoginController extends Controller
             $id = $user->id;
             $life = Lifeplan::all()->where('user_id', $id);
             $data = Deposit::all()->where('user_id', $id);
-           
+
             return redirect('/dashboard');
+        }else{
+            return back();
         }
     }
 
