@@ -15,6 +15,7 @@
         <div class="card-body">
           <form id="formlifeplan">
 
+
             <div class="pl-lg-4">
               <div class="row">
                 <div class="col-lg-6">
@@ -37,7 +38,6 @@
 
               </div>
             </div>
-
             <div  style=" display: flex; align-items: center; justify-content: center;">
                 <button id="next" type="button" class="btn btn-primary hitung" data-id="hitung">Next</button>
              </div>
@@ -58,22 +58,22 @@
             <form id="menabungku">
                 <div class="form-group">
                     <label for="money">Jumlah uang untuk ditabung</label>
-                    <input type="text" class="form-control" id="money" >
+                    <input type="text" class="form-control money" id="money" >
 
                   </div>
                   <div class="form-group">
                     <label for="kurang">Kekurangan</label>
-                    <input type="text" class="form-control" id="kurang" disabled>
+                    <input type="text" class="form-control kurang" id="kurang" disabled>
                   </div>
 
                   <div class="form-group">
                     <label for="bulan">Jumlah Bulan</label>
-                    <input type="text" class="form-control" id="bulanabung" disabled>
+                    <input type="text" class="form-control bulanabung" id="bulanabung" disabled>
                   </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-          <button type="button" class="btn btn-primary" id="tabung">Tabung Sekarang</button>
+          <button type="button" class="btn btn-primary tabung">Tabung Sekarang</button>
         </form>
         </div>
       </div>
@@ -132,13 +132,29 @@ $(document).ready(function(){
                         $('#tabung').prop('disabled', response['button']);
                         $('#bulanabung').val(response['month']);
                     }
-
                 });
-
-
-
             });
+        });
 
+        $('.tabung').on('click', function(){
+            var moneyku = $('.money').val();
+            var kurang = $('.kurang').val();
+            var bulan = $('.bulanabung').val();
+
+          ajax();
+
+          $.ajax({
+            url: '/dashboard/deposit/savedata',
+            method: 'POST',
+            data: { 'menabung':1,
+                    'id':id,
+                    'money':moneyku,
+                    'less':kurang,
+                    'month':bulan
+            }, success:function(response){
+                console.log(response);
+            }
+          });
 
         });
 
