@@ -152,8 +152,7 @@ class DepositController extends Controller
         $data->less = $strkurang;
         $data->inflation = '6%';
         $data->month = $request->get('month');
-
-        return $data;
+        $data->save();
       }
 
 

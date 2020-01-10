@@ -140,21 +140,27 @@ $(document).ready(function(){
             var moneyku = $('.money').val();
             var kurang = $('.kurang').val();
             var bulan = $('.bulanabung').val();
+        if(moneyku.trim()==''){
+            swal("fail", "Please field the data", "error");
+        }else{
+            ajax();
 
-          ajax();
+                $.ajax({
+                url: '/dashboard/deposit/savedata',
+                method: 'POST',
+                data: { 'menabung':1,
+                        'id':id,
+                        'money':moneyku,
+                        'less':kurang,
+                        'month':bulan
+                }, success:function(response){
+                    $('#menabungku')[0].reset();
+                    $('#exampleModal').modal('hide');
+                    swal("Sukses", "Data berhasil disimpan", "success");
+                }
+                });
 
-          $.ajax({
-            url: '/dashboard/deposit/savedata',
-            method: 'POST',
-            data: { 'menabung':1,
-                    'id':id,
-                    'money':moneyku,
-                    'less':kurang,
-                    'month':bulan
-            }, success:function(response){
-                console.log(response);
-            }
-          });
+        }
 
         });
 
