@@ -24,7 +24,7 @@
 
               <tr>
                 <th scope="row">{{ $loop->iteration }} </th>
-              <td ><input type="checkbox" id="cekbok" data-id="{{$row->id}}" @if($row->priority=="true") checked @else @endif></td>
+              <td ><input type="checkbox" class="cekbok" data-id="{{$row->id}}" @if($row->priority=="true") checked @else @endif></td>
                 <td>{{ $row->name }} </td>
                 <td>{{ $row->cost }} </td>
                 <td>{{ $row->inflation }}</td>
@@ -73,7 +73,7 @@
                 @if($row->priority=="false" or $row->priority=="")
               <tr>
                 <th scope="row">{{ $loop->iteration }} </th>
-              <td><input type="checkbox" id="cekbok" data-id="{{$row->id}}" @if($row->priority=="true") checked @else @endif></td>
+              <td><input type="checkbox" class="cekbok" data-id="{{$row->id}}"></td>
                 <td>{{ $row->name }} </td>
                 <td>{{ $row->cost }} </td>
                 <td>{{ $row->inflation }}</td>
@@ -129,11 +129,13 @@ $(document).ready(function(){
                  });
         });
 
-        $('#cekbok').on('change', function(){
-           var cek = this.checked;
+        $('.cekbok').on('change', function(){
+                var cek = this.checked;
            var id = $(this).data('id');
-        //    console.log(cek);
+
+
             ajax();
+
             $.ajax({
                 url:'/dashboard/lifeplan/cekbox',
                 method:'POST',
@@ -147,6 +149,7 @@ $(document).ready(function(){
                 }
             });
         });
+
 
         function ajax()
        {

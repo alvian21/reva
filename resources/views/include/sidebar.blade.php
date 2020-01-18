@@ -89,7 +89,7 @@
         <!-- Navigation -->
         <ul class="navbar-nav">
           <li class="nav-item">
-          <a class=" nav-link active " href="#"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
+          <a class=" nav-link active " href="{{Route('dashboard')}}"> <i class="ni ni-tv-2 text-primary"></i> Dashboard
             </a>
           </li>
           <li class="nav-item">
@@ -102,7 +102,7 @@
               <i class="ni ni-bullet-list-67 text-green"></i> Data LifePlan
             </a>
           </li>
-         
+
         </ul>
       </div>
     </div>

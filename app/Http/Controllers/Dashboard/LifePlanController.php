@@ -96,14 +96,4 @@ class LifePlanController extends Controller
 
          }
      }
-
-
-     public function fetchcek()
-     {
-        $data = Lifeplan::all();
-        $hasil = '';
-        foreach($data as $row){
-
-        }
-     }
 }
