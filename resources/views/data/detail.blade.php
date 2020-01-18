@@ -19,7 +19,7 @@
         <tbody>
         <tr>
             <td class="report-header report-subheader-noindent" colspan="4">
-            <b>Dibuat Tanggal : </b>
+            <b>Dibuat Tanggal : {{$data->created_at}}</b>
             </td>
         </tr>
 
