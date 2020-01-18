@@ -84,7 +84,13 @@ class LifePlanController extends Controller
         $plan->upcoming_costs = $request->get('biayadatang');
         $plan->save();
 
-
     }
-
+     public function cekbox(Request $request)
+     {
+         if($request->get('cekbox')){
+             $data = Lifeplan::find($request->get('id'));
+             $data->priority = $request->get('cek');
+             return $data;
+         }
+     }
 }

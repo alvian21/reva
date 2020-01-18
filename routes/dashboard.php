@@ -18,6 +18,7 @@ Route::group(['prefix' => 'dashboard',
     Route::get('/data/{id}/edit','DataController@getEdit')->name('editdata');
     Route::get('/data/delete','DataController@delete');
     Route::get('/lifeplan','LifePlanController@index')->name('lifeplan');
+    Route::post('/lifeplan/cekbox','LifePlanController@cekbox');
     Route::post('/lifeplan/fetch','LifePlanController@fetch')->name('fetch');
     Route::post('/lifeplan/hitung','LifePlanController@hitung');
     Route::post('/lifeplan/save','LifePlanController@savedata');

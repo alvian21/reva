@@ -4,12 +4,40 @@
     <div class="col">
       <div class="card bg-default shadow">
         <div class="card-header bg-transparent border-0">
-          <h3 class="text-white mb-0">Data LifePlan</h3>
+          <h3 class="text-white mb-0">Data LifePlan Prioritas</h3>
         </div>
         <div class="table-responsive">
           <table class="table align-items-center table-dark table-flush">
             <thead class="thead-dark">
               <tr>
+                <th scope="col">Prioritas</th>
+                <th scope="col">No</th>
+                <th scope="col">Nama LifePlan</th>
+                <th scope="col">Biaya Saat ini</th>
+                <th scope="col">Inflasi</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <h3 class="text-black mb-0">Data LifePlan Non Prioritas</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="table align-items-center  table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Prioritas</th>
                 <th scope="col">No</th>
                 <th scope="col">Nama LifePlan</th>
                 <th scope="col">Biaya Saat ini</th>
@@ -20,6 +48,7 @@
             <tbody>
                 @foreach($data as $row)
               <tr>
+              <td><input type="checkbox" id="cekbok" data-id="{{$row->id}}"></td>
                 <th scope="row">{{ $loop->iteration }} </th>
                 <td>{{ $row->name }} </td>
                 <td>{{ $row->cost }} </td>
@@ -43,8 +72,7 @@
         </div>
       </div>
     </div>
-  </div>
-
+</div>
 @endsection
 @section('script')
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -75,6 +103,32 @@ $(document).ready(function(){
                     }
                  });
         });
+
+        $('#cekbok').on('change', function(){
+           var cek = $(this).val();
+           var id = $(this).data('id');
+            ajax();
+            $.ajax({
+                url:'/dashboard/lifeplan/cekbox',
+                method:'POST',
+                data:{
+                    'cekbox':1,
+                    'id':id,
+                    'cek':cek},
+                success:function(response){
+                   console.log(response);
+                }
+            });
+        });
+
+        function ajax()
+       {
+        $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    }
+                });
+       }
 });
 </script>
 @endsection
