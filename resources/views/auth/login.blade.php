@@ -1,59 +1,91 @@
 @extends('auth.main')
 
 @section('content')
-<div class="col-lg-5 col-md-7">
-        <div class="card bg-secondary shadow border-0">
-          <div class="card-header bg-transparent pb-5">
-            <div class="text-muted text-center mt-2 mb-3"><small>Sign in with</small></div>
-            <div class="btn-wrapper text-center">
-              <a href="#" class="btn btn-neutral btn-icon">
-                <span class="btn-inner--icon"><img src="../assets/img/icons/common/github.svg"></span>
-                <span class="btn-inner--text">Github</span>
-              </a>
-              <a href="#" class="btn btn-neutral btn-icon">
-                <span class="btn-inner--icon"><img src="../assets/img/icons/common/google.svg"></span>
-                <span class="btn-inner--text">Google</span>
-              </a>
-            </div>
-          </div>
-          <div class="card-body px-lg-5 py-lg-5">
-            <div class="text-center text-muted mb-4">
-              <small>Or sign in with credentials</small>
-            </div>
-            <form role="form" method="POST" action="{{ Route('login') }}">
-                @csrf
-              <div class="form-group mb-3">
-                <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-email-83"></i></span>
-                  </div>
-                  <input class="form-control" placeholder="Email" type="email" name="email">
-                </div>
-              </div>
-              <div class="form-group">
-                <div class="input-group input-group-alternative">
-                  <div class="input-group-prepend">
-                    <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
-                  </div>
-                  <input class="form-control" placeholder="Password" type="password" name="password">
-                </div>
-              </div>
+<div class="container">
+<img src="{{ asset('assets/img/brand/logo.svg') }}" class="img-fluid mx-auto d-block" alt="">
+</div><br>
 
-              <div class="text-center">
-                <button type="submit" name="submit" class="btn btn-primary my-4" >Sign in</button>
-              </div>
+<!-- Card -->
+<div class="container d-flex justify-content-center">
+
+    <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 25rem;">
+        <div class="card-body">
+            <h6 class="card-title text-center"><b>Selamat Datang, Sobat Dreamers</b></h6>
+
+        <form>
+                <div class="form-group ">
+                    <label for="exampleInputEmail1" style="font-size: small;"><b>Email</b></label>
+                    <input type="email" class="form-control email" name="email" id="exampleInputEmail1"  aria-describedby="emailHelp"
+                        placeholder="example@email.com" style="font-size: small;">
+                </div>
+
+                <div class="form-group ">
+                    <label for="exampleInputPassword1" style="font-size: small;"><b>Password</b></label>
+                    <input type="password" class="form-control password" name="password" id="exampleInputPassword1"  placeholder="xxxxxxxx"
+                        style="font-size: small;">
+                </div>
+
+                <div class="form-group form-check text-right">
+                    <p class="form-check-label" style="font-size: small;"></p>Lupa Password ?</p>
+                </div><br>
+
+                <div class="button">
+                    <button type="button" name="submit" class="btn btn-block text-white submit"
+                        style="background-color: #4aadda;">Login</button>
+                </div>
             </form>
-          </div>
+            <br><br>
         </div>
-        <div class="row mt-3">
-          <div class="col-6">
-            <a href="#" class="text-light"><small>Forgot password?</small></a>
-          </div>
-          <div class="col-6 text-right">
-            <a href="{{ Route('indexreg') }}" class="text-light"><small>Create new account</small></a>
-          </div>
-        </div>
-      </div>
+    </div>
+</div>
 
+<p class="text-center" style="font-size: small;"><b>Belum punya akun ? <a href="{{Route('indexreg')}}"
+            class="text-primary" style="color: #4aadda;">Daftar</a></b></p>
+
+<br><br>
+
+
+@endsection
+
+@section('script')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('.submit').on('click', function(){
+        var email = $('.email').val();
+        var password = $('.password').val();
+
+        if(email==''){
+            swal("Gagal", "Email harus diisi", "error");
+        }else if(password==''){
+            swal("Gagal", "Password harus diisi", "error");
+        }else{
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url:'/',
+                method:'POST',
+                data:{'email':email,
+                    'password':password
+            }, success:function(response){
+
+               if(response["result"]=="false"){
+                swal("Gagal", "Password salah", "error");
+               }else if(response["result"]=="true"){
+                swal("Berhasil", "Login Berhasil", "success");
+                window.setTimeout(function(){window.location.href="/dashboard"},1500);
+               }else if(response["result"]=="notfound"){
+                swal("Gagal", "Email Tidak ditemukan", "error");
+               }
+            }
+            });
+        }
+    });
+});
+</script>
 @endsection
 

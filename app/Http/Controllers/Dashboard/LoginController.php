@@ -7,28 +7,39 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Lifeplan;
+use Validator;
 
 class LoginController extends Controller
 {
     public function index()
     {
-        return view('auth.login');
+        if(Auth::check()){
+            return redirect('/dashboard');
+        }else{
+            return view('auth.login');
+        }
+
     }
 
     public function login(Request $request)
     {
         $email = $request->get('email');
         $password = $request->get('password');
-
-        if(Auth::attempt(['email' => $email, 'password' => $password])){
-            $user = Auth::user();
-            $id = $user->id;
-            $life = Lifeplan::all()->where('user_id', $id);
-
-            return redirect('/dashboard');
+        $data = User::where('email',$email)->first();
+        if(!empty($data)){
+                if(Auth::attempt(['email' => $email, 'password' => $password])){
+                            $user = Auth::user();
+                            $id = $user->id;
+                            $life = Lifeplan::all()->where('user_id', $id);
+                            return array('result'=>'true');
+                        }else{
+                            return array('result'=>'false');
+                     }
         }else{
-            return back();
+            return array('result'=>'notfound');
         }
+
+
     }
 
 
@@ -45,6 +56,15 @@ class LoginController extends Controller
 
     public function register(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8',
+            'c_password' => 'required|same:password',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator->errors());
+        }
         $user = new User;
         $user->name = $request->get('name');
         $user->email = $request->get('email');
