@@ -17,7 +17,7 @@ class CreateLifeplansTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->integer('priority')->nullable();
+            $table->string('priority')->nullable();
             $table->string('name');
             $table->string('cost');
             $table->string('month');

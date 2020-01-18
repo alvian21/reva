@@ -10,8 +10,8 @@
           <table class="table align-items-center table-dark table-flush">
             <thead class="thead-dark">
               <tr>
-                <th scope="col">Prioritas</th>
                 <th scope="col">No</th>
+                <th scope="col">Prioritas</th>
                 <th scope="col">Nama LifePlan</th>
                 <th scope="col">Biaya Saat ini</th>
                 <th scope="col">Inflasi</th>
@@ -19,7 +19,30 @@
               </tr>
             </thead>
             <tbody>
+                @foreach($data as $row)
+                @if($row->priority=="true")
 
+              <tr>
+                <th scope="row">{{ $loop->iteration }} </th>
+              <td ><input type="checkbox" id="cekbok" data-id="{{$row->id}}" @if($row->priority=="true") checked @else @endif></td>
+                <td>{{ $row->name }} </td>
+                <td>{{ $row->cost }} </td>
+                <td>{{ $row->inflation }}</td>
+                <td class="text-right">
+                  <div class="dropdown">
+                    <a class="btn btn-sm btn-icon-only text-light" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
+                      <a class="dropdown-item" href="{{ Route('detail',[$row->id]) }}">Detail</a>
+                      <a class="dropdown-item" href="{{ Route('editdata',[$row->id]) }}">Edit</a>
+                      <button class="dropdown-item delete" data-id="{{ $row->id }}">Delete</button>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              @endif
+              @endforeach
             </tbody>
           </table>
         </div>
@@ -37,8 +60,8 @@
           <table class="table align-items-center  table-flush">
             <thead class="thead-light">
               <tr>
-                <th scope="col">Prioritas</th>
                 <th scope="col">No</th>
+                <th scope="col">Prioritas</th>
                 <th scope="col">Nama LifePlan</th>
                 <th scope="col">Biaya Saat ini</th>
                 <th scope="col">Inflasi</th>
@@ -47,9 +70,10 @@
             </thead>
             <tbody>
                 @foreach($data as $row)
+                @if($row->priority=="false" or $row->priority=="")
               <tr>
-              <td><input type="checkbox" id="cekbok" data-id="{{$row->id}}"></td>
                 <th scope="row">{{ $loop->iteration }} </th>
+              <td><input type="checkbox" id="cekbok" data-id="{{$row->id}}" @if($row->priority=="true") checked @else @endif></td>
                 <td>{{ $row->name }} </td>
                 <td>{{ $row->cost }} </td>
                 <td>{{ $row->inflation }}</td>
@@ -66,6 +90,7 @@
                   </div>
                 </td>
               </tr>
+              @endif
               @endforeach
             </tbody>
           </table>
@@ -105,8 +130,9 @@ $(document).ready(function(){
         });
 
         $('#cekbok').on('change', function(){
-           var cek = $(this).val();
+           var cek = this.checked;
            var id = $(this).data('id');
+        //    console.log(cek);
             ajax();
             $.ajax({
                 url:'/dashboard/lifeplan/cekbox',
@@ -116,7 +142,8 @@ $(document).ready(function(){
                     'id':id,
                     'cek':cek},
                 success:function(response){
-                   console.log(response);
+                    swal("Berhasil", "LifePlan berhasil diubah", "success");
+                    window.setTimeout(function(){window.location.reload()}, 1500);
                 }
             });
         });

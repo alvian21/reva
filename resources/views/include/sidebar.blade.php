@@ -102,11 +102,7 @@
               <i class="ni ni-bullet-list-67 text-green"></i> Data LifePlan
             </a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link " href="{{ Route('deposit') }}">
-              <i class="ni ni-bullet-list-67 text-yellow"></i> Menabung
-            </a>
-          </li>
+         
         </ul>
       </div>
     </div>

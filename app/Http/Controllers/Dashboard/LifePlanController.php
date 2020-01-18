@@ -90,7 +90,20 @@ class LifePlanController extends Controller
          if($request->get('cekbox')){
              $data = Lifeplan::find($request->get('id'));
              $data->priority = $request->get('cek');
+             $data->save();
+
              return $data;
+
          }
+     }
+
+
+     public function fetchcek()
+     {
+        $data = Lifeplan::all();
+        $hasil = '';
+        foreach($data as $row){
+
+        }
      }
 }
