@@ -1,8 +1,12 @@
-@extends('main')
+@extends('main2')
 @section('content')
+<div class="main-content">
+    <div class="container" >
+        <div class="row">
 
-<section class="card shadow page-content reports new-design">
+
     <div class="col-lg-12 content-wrapper">
+        <div class="card shadow">
         <div class="table-container list-table">
         <div class="report-title">
         <div class="table-responsive dragscroll">
@@ -91,5 +95,9 @@
             </div>
         </div>
         </div>
-</section>
+    </div>
+</div>
+</div>
+</div>
+
 @endsection

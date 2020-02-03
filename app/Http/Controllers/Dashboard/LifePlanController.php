@@ -15,7 +15,7 @@ class LifePlanController extends Controller
     var $tanggal;
     public function index()
     {
-        return view('lifeplan.index');
+        return view('lifeplan.index2');
     }
 
     public function fetch(Request $request)
@@ -95,5 +95,44 @@ class LifePlanController extends Controller
              return $data;
 
          }
+     }
+
+     public function create()
+     {
+         return view('lifeplan.create');
+     }
+
+
+     public function rumah()
+     {
+         return view('lifeplan.rumah');
+     }
+     public function liburan()
+     {
+         return view('lifeplan.liburan');
+     }
+     public function mobil()
+     {
+         return view('lifeplan.mobil');
+     }
+
+     public function pendidikan()
+     {
+         return view('lifeplan.pendidikan');
+     }
+     public function fetchurl(Request $request)
+     {
+        $url = '#';
+        if($request->get('value')=='rumah'){
+            $url = '/dashboard/lifeplan/create/rumah';
+        }elseif($request->get('value')=='liburan'){
+            $url = '/dashboard/lifeplan/create/liburan';
+        }elseif($request->get('value')=='mobil'){
+            $url = '/dashboard/lifeplan/create/mobil';
+        }elseif($request->get('value')=='pendidikan'){
+            $url = '/dashboard/lifeplan/create/pendidikan';
+        }
+
+        echo $url;
      }
 }

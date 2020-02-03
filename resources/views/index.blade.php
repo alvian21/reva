@@ -1,349 +1,286 @@
-@extends('main')
-
-@section('header')
-<div class="container-fluid">
-    <div class="header-body">
-      <!-- Card stats -->
-      <div class="row">
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Traffic</h5>
-                  <span class="h2 font-weight-bold mb-0">350,897</span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-danger text-white rounded-circle shadow">
-                    <i class="fas fa-chart-bar"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"><i class="fa fa-arrow-up"></i> 3.48%</span>
-                <span class="text-nowrap">Since last month</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">New users</h5>
-                  <span class="h2 font-weight-bold mb-0">2,356</span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-warning text-white rounded-circle shadow">
-                    <i class="fas fa-chart-pie"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-danger mr-2"><i class="fas fa-arrow-down"></i> 3.48%</span>
-                <span class="text-nowrap">Since last week</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Sales</h5>
-                  <span class="h2 font-weight-bold mb-0">924</span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                    <i class="fas fa-users"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-warning mr-2"><i class="fas fa-arrow-down"></i> 1.10%</span>
-                <span class="text-nowrap">Since yesterday</span>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-          <div class="card card-stats mb-4 mb-xl-0">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                  <h5 class="card-title text-uppercase text-muted mb-0">Performance</h5>
-                  <span class="h2 font-weight-bold mb-0">49,65%</span>
-                </div>
-                <div class="col-auto">
-                  <div class="icon icon-shape bg-info text-white rounded-circle shadow">
-                    <i class="fas fa-percent"></i>
-                  </div>
-                </div>
-              </div>
-              <p class="mt-3 mb-0 text-muted text-sm">
-                <span class="text-success mr-2"><i class="fas fa-arrow-up"></i> 12%</span>
-                <span class="text-nowrap">Since last month</span>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-@endsection
-
+@extends('main2')
 @section('content')
-<div class="row">
+<div class="main-content">
 
-    <div class="col-xl-12 order-xl-1">
-      <div class="card bg-secondary shadow">
-        <div class="card-header bg-white border-0">
-          <div class="row align-items-center">
-            <div class="col-8">
-              <h3 class="mb-0">My account</h3>
-            </div>
-            <div class="col-4 text-right">
-              <a href="#!" class="btn btn-sm btn-primary">Settings</a>
-            </div>
-          </div>
-        </div>
-        <div class="card-body">
-          <form>
-            <h6 class="heading-small text-muted mb-4">User information</h6>
-            <div class="pl-lg-4">
+
+    <!-- ModalProfile -->
+    <div class="container">
+      <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+       <div class="modal-dialog modal-dialog-centered" role="document">
+         <div class="modal-content">
+           <div class="modal-header">
+             <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+               <span aria-hidden="true">&times;</span>
+             </button> -->
+           </div>
+
+           <div class="container" style="margin-top: 2%">
+             <div class="row">
+               <div class="col" style="margin-left: 3%;">
+                 <img src="https://i.insider.com/5d55a8d4f4fc2436e96f3e36?width=1100&format=jpeg&auto=webp" style="width: 168px; height: 168px;" class="rounded-circle img-circle img-fluid" alt="">
+               </div>
+               <div class="col-md-6" style="margin-right: 5%;">
+                 <label for="" class="text-dark"><b>Nama</b></label>
+                 <input type="text" class="form-control" placeholder="Reva" disabled><br>
+
+                 <label for="" class="text-dark"><b>Email</b></label>
+                 <input type="text" class="form-control" placeholder="Reva@gmail.com" disabled><br><br>
+               </div>
+             </div>
+
+                 <div class="btn d-flex justify-content-center">
+                   <button class="btn btn-lg text-white" type="button" class="close" data-dismiss="modal" aria-label="Close" style="background-color: #2d6cdf; margin-bottom: 10%;">Kembali</button>
+               </div>
+
+           </div>
+
+         </div>
+       </div>
+     </div>
+     </div><br><br>
+   <!-- End ModalProfile -->
+   <div class="container mt-3">
+        <h4 class="text-dark">Halo, Sobat Dreamers</h4>
+   </div>
+      <div class="container mt-3">
+
+
+          <!-- Preview -->
               <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group focused">
-                    <label class="form-control-label" for="input-pemasukan"  >Pemasukan</label>
-                    <input type="text" id="input-pemasukan" class="form-control form-control-alternative" placeholder="pemasukan">
+                  @foreach($prio as $row)
+                <div class="col-3">
+                  <div class="card text-white mb-3" style="background-color: #ebf1fc;">
+                      <div class="card-body">
+                          <h5 class="card-title" style="color: #2d6cdf;">{{ $row->name }}</h5>
+                          @php $tanggal = new Datetime($row->date);
+                                $hasil = $tanggal->format('F-Y');
+                          @endphp
+                          <p class="card-text" style="color: #2d6cdf;">{{ $hasil }}</p>
+                      </div>
+                      <div class="card-footer bg-white text-dark text-center">
+                        <p class="text-muted">Perkiraan Menabung</p>
+                        <h6>{{ $row->per_month }}</h6>
+                      </div>
                   </div>
                 </div>
-                <div class="col-lg-6">
-                  <div class="form-group">
-                    <label class="form-control-label" for="input-pengeluaran">Pengeluaran</label>
-                    <input type="pengeluaran" id="input-pengeluaran" class="form-control form-control-alternative" placeholder="pengeluaran">
-                  </div>
-                </div>
+                @endforeach
+
+
               </div>
-              {{-- <div class="row">
-                <div class="col-lg-6">
-                  <div class="form-group focused">
-                    <label class="form-control-label" for="input-first-name">First name</label>
-                    <input type="text" id="input-first-name" class="form-control form-control-alternative" placeholder="First name" >
-                  </div>
-                </div>
-                <div class="col-lg-6">
-                  <div class="form-group focused">
-                    <label class="form-control-label" for="input-last-name">Last name</label>
-                    <input type="text" id="input-last-name" class="form-control form-control-alternative" placeholder="Last name" >
-                  </div>
-                </div>
-              </div> --}}
             </div>
-            <hr class="my-4">
 
-          </form>
-        </div>
+            <!-- End Preview -->
+
+            <!-- Simulasi Investasi -->
+          <div class="container">
+            <div class="card">
+              <div class="card-body">
+                <h6 class="text-dark">Simulasi Investasi</h6>
+                <p class="text-dark">Gerakan slider untuk melihat sebarap banyak uang kamu akan bertambah</p>
+
+                <form>
+                  <div class="form-row">
+                    <div class="col">
+                      <h6 class="text-dark mt-3">Investasi Awal</h6>
+                    </div>
+                    <div class="col-md-2">
+                      <input type="text" class="form-control" placeholder="Rp.100.000">
+                    </div>
+                    <input type="range" class="form-control-range mt-3" id="formControlRange">
+                  </div><br>
+
+                  <div class="form-row">
+                    <div class="col">
+                      <h6 class="text-dark mt-3">Investasi Bulanan</h6>
+                    </div>
+                    <div class="col-md-2">
+                      <input type="text" class="form-control" placeholder="Rp.100.000">
+                    </div>
+                    <input type="range" class="form-control-range mt-3" id="formControlRange">
+                  </div>
+                </form><br><br>
+
+                <!-- Chart -->
+                <div class="row">
+                  <div class="col">
+                    <h6 class="text-dark text-right">Perkiraan Nilai Investasi Kamu di Masa Depan</h6>
+                    <h6 class="text-right" style="color: #2d6cdf;">Rp. 2,782,358,770.80</h6>
+                    <canvas id="myChart" width="200" height="70"></canvas>
+                  </div>
+                </div>
+                <!-- End Chart -->
+
+                <div class="container">
+                <hr>
+
+                    <h5 class="text-center text-dark">Tahun Ke-14</h5><br>
+
+                    <h6 class="text-dark">Mulai kembangkan uang kamu hari ini demi masa depan yang cerah, siapapun bisa!</h6>
+
+                  <p>*Simulasi dibuat berdasarkan kinerja masa lalu, dan tidak menjamin kinerja di masa depan</p>
+               </div><br><br>
+              </div>
+            </div>
+
+            <!-- Quiz Investasi -->
+
+                <div class="card">
+                  <div class="card-header"><h6 class="text-dark">Quiz Investasi</h6></div>
+                  <div class="card-body">
+
+                    <div class="row">
+                      <div class="col-sm">
+
+                        <a href="https://forms.gle/uZiVgbPSfx6zoG7A7">
+                        <div class="card border-top border-left border-right" style="width: 18rem;">
+                          <div class="card-body">
+                              <h6 class="card-title mt-2" style="color: #2d6cdf; margin-left: -4%;">Apa Itu Impianku ?</h6>
+                            </div>
+                            <img src="{{ asset('new/assets/img/Vector.svg') }}"class="card-img-bottom" alt="...">
+                          </div>
+                        </div>
+                      </a>
+
+                      <div class="col-sm">
+                        <a href="https://forms.gle/WCdBVvdmLJwDUCpLA">
+                        <div class="card border-top border-left border-right" style="width: 18rem;">
+                          <div class="card-body" style="color: #2d6cdf; margin-left: -4%;">
+                            <h6 class="card-title mt-2">Udah Kenal My Dreams Belum ?</h6>
+                          </div>
+                            <img src="{{ asset('new/assets/img/Vector.svg') }}"class="card-img-bottom" alt="...">
+                          </div>
+                      </div>
+                    </a>
+
+                      <div class="col-sm-4">
+                        <a href="https://forms.gle/DgxNnuSFZEc9R1JD8">
+                        <div class="card border-top border-left border-right" style="width: 18rem;">
+                          <div class="card-body">
+                            <h6 class="card-title mt-2" style="color: #2d6cdf; margin-left: -4%;">Tau gak cara kerja My Dreams ?</h6>
+                          </div>
+                          <img src="{{ asset('new/assets/img/Vector.svg') }}" class="card-img-bottom" alt="...">
+                        </div>
+                    </div>
+                  </a>
+
+              </div>
+            </div>
+
+          </div>
+          <!-- End Simulasi Investasi -->
+
+          <!-- News -->
+            <div class="card">
+              <div class="card-body">
+
+                <h6 class="text-dark">Tips Untuk Sobat Dreamers</h6><br>
+
+                <div class="row">
+                    <div class="col">
+                      <img src="https://images.unsplash.com/photo-1434725039720-aaad6dd32dfe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1198&q=80" width="400" class="rounded" alt="">
+                    </div>
+                    <div class="col-sm-6">
+                      <h6 class="text-dark">My Dream Ajak Milenial Rencanakan Impian Masa Depan Dengan Mudah</h6>
+                    </div>
+                  </div><br>
+
+                  <a href="">
+                  <div class="row">
+                    <div class="col">
+                      <img src="https://images.unsplash.com/photo-1433838552652-f9a46b332c40?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" width="400" class="rounded" alt="">
+                    </div>
+                    <div class="col-sm-6">
+                      <h6 class="text-dark">Millennial Bisa Banget Kok Punya Rumah</h6>
+                    </div>
+                  </div>
+                </a>
+                  <br>
+
+                  <a href="">
+                  <div class="row">
+                    <div class="col">
+                      <img src="https://images.unsplash.com/photo-1524260855046-f743b3cdad07?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1101&q=80" width="400" class="rounded" alt="">
+                    </div>
+                    <div class="col-sm-6">
+                      <h6 class="text-dark">Mencicil Masa Depan dengan Investasi</h6>
+                    </div><br>
+                  </div>
+              </div>
+            </a>
+
+              </div>
+            </div>
+          <!-- End News -->
+
       </div>
-    </div>
   </div>
-<div class="row mt-5">
-    <div class="col-xl-12 mb-5 mb-xl-0">
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <div class="row align-items-center">
-            <div class="col">
-              <h3 class="mb-0">Page visits</h3>
-            </div>
-            <div class="col text-right">
-              <a href="#!" class="btn btn-sm btn-primary">See all</a>
-            </div>
-          </div>
-        </div>
-        <div class="table-responsive">
-          <!-- Projects table -->
-          <table class="table align-items-center table-flush">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Page name</th>
-                <th scope="col">Pemasukan</th>
-                <th scope="col">Unique users</th>
-                <th scope="col">Bounce rate</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">
-                  /argon/
-                </th>
-                <td>
-                        <div class="input-group input-group-alternative">
-                                <div class="input-group-prepend">
-
-                                  <span class="input-group-text"> <button type="submit" class="btn btn-sm btn-primary" id="buttonku">button</button></span>
-                                </div>
-                                <input class="form-control" id="inputku" placeholder="Email" type="email" disabled>
-                              </div>
-                </td>
-                <td>
-                  340
-                </td>
-                <td>
-                    <div class="form-group focused">
-                        <input type="text" id="input-pemasukan" class="form-control form-control-alternative" placeholder="pemasukan">
-                      </div>
-                </td>
-              </tr>
-
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-    {{-- <div class="col-xl-4">
-      <div class="card shadow">
-        <div class="card-header border-0">
-          <div class="row align-items-center">
-            <div class="col">
-              <h3 class="mb-0">Social traffic</h3>
-            </div>
-            <div class="col text-right">
-              <a href="#!" class="btn btn-sm btn-primary">See all</a>
-            </div>
-          </div>
-        </div>
-        <div class="table-responsive">
-          <!-- Projects table -->
-          <table class="table align-items-center table-flush">
-            <thead class="thead-light">
-              <tr>
-                <th scope="col">Referral</th>
-                <th scope="col">Visitors</th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">
-                  Facebook
-                </th>
-                <td>
-                  1,480
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">60%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-danger" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  Facebook
-                </th>
-                <td>
-                  5,480
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">70%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-success" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" style="width: 70%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  Google
-                </th>
-                <td>
-                  4,807
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">80%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-primary" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  Instagram
-                </th>
-                <td>
-                  3,678
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">75%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-info" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <th scope="row">
-                  twitter
-                </th>
-                <td>
-                  2,645
-                </td>
-                <td>
-                  <div class="d-flex align-items-center">
-                    <span class="mr-2">30%</span>
-                    <div>
-                      <div class="progress">
-                        <div class="progress-bar bg-gradient-warning" role="progressbar" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" style="width: 30%;"></div>
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div> --}}
-</div>
 @endsection
 @section('script')
 <script>
-$(document).ready(function(){
-    $('#buttonku').on('click', function(event){
-        event.preventDefault();
-$("#inputku").attr('disabled', !$("#inputku").attr('disabled'));
 
+
+    var ctx = document.getElementById('myChart').getContext("2d");
+
+    var gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientStroke.addColorStop(0, '#80b6f4');
+
+    var gradientFill = ctx.createLinearGradient(500, 0, 100, 0);
+    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0.6)");
+
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["JAN", "FEB", "MAR", "APR", "MAY"],
+            datasets: [{
+                label: "Data",
+                borderColor: gradientStroke,
+                pointBorderColor: gradientStroke,
+                pointBackgroundColor: gradientStroke,
+              pointHoverBackgroundColor: gradientStroke,
+                pointHoverBorderColor: gradientStroke,
+                pointBorderWidth: 10,
+                pointHoverRadius: 10,
+                pointHoverBorderWidth: 1,
+                pointRadius: 3,
+                fill: true,
+                backgroundColor: gradientFill,
+                borderWidth: 4,
+                data: [200, 150, 100, 50, 0]
+            }]
+        },
+        options: {
+            legend: {
+                position: "bottom"
+            },
+            scales: {
+                yAxes: [{
+                    ticks: {
+                        fontColor: "rgba(0,0,0,0.5)",
+                        fontStyle: "bold",
+                        beginAtZero: true,
+                        maxTicksLimit: 5,
+                        padding: 20
+                    },
+                    gridLines: {
+                        drawTicks: false,
+                        display: false
+                    }
+
+                }],
+                xAxes: [{
+                    gridLines: {
+                        zeroLineColor: "transparent"
+                    },
+                    ticks: {
+                        padding: 20,
+                        fontColor: "rgba(0,0,0,0.5)",
+                        fontStyle: "bold"
+                    }
+                }]
+            }
+        }
     });
-});
 
-</script>
+  </script>
 
-<script>
-function MouseOver(elem) {
-  elem.style.display = "none";
-}
-
-function MouseOut(elem) {
-  elem.style.color = "black";
-}
-</script>
 @endsection
-
-
-

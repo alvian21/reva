@@ -2,55 +2,45 @@
 
 @section('content')
 <div class="container">
-    <img src="{{ asset('assets/img/brand/logo.svg') }}" class="img-fluid mx-auto d-block" alt="">
-</div>
+    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" style="margin-top: 3%;"
+        uk-grid>
 
-<div class="container d-flex justify-content-center" style="margin-top: 3%;">
+        <div class="uk-flex-last@s uk-box-shadow-large uk-padding uk-card-media-right uk-cover-container"
+            style="width: 710px;">
+            <img src="{{ asset('new/assets/images/Group 2.png') }}" style="width: 100%;" alt="" uk-cover>
+            <canvas width="600" height="400"></canvas>
+        </div>
 
-    <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 50rem;">
-        <div class="card-body">
-            <h6 class="card-title text-center"><b>Daftar Yuk Biar Terwujud Impian mu</b></h6>
+        <div style="width: 400px;">
+            <div class="uk-card-body">
 
-            <br>
-            @if($errors->any())
-            <div class="alert alert-danger" role="alert">
-                {{$errors->first()}}
+                <img src="{{ asset('assets/images/Logo.png') }}" width="120" alt=""><br><br>
+
+                <h2 class="uk-card-title">Hallo Sobat Dreamers</h2>
+                <p>sudah siap untuk melakukan perjalanan<br>
+                    impianmu, Yuk jelajahi sekarang</p>
+                <a href="/login" class="text-dark"><b>Login</b></a>&nbsp;
+                <a href="/register" class="text-primary"><b>Daftar</b></a>
+
+                <br><br>
+                <form action="">
+                    <label for="email" class="text-dark"><b>Nama</b></label>
+                    <input class="form-control" type="text" name="name" placeholder="Nama">
+                    <br>
+
+                    <label for="email" class="text-dark"><b>Email</b></label>
+                    <input class="form-control" type="text" name="email" placeholder="Email">
+                    <br>
+
+                    <label for="password" class="text-dark"><b>Password</b></label>
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                    <br><br>
+
+                    <button type="submit" class="btn btn-block btn-primary">Masuk</button>
+                </form>
             </div>
-            @endif
-        <form method="POST" action="{{Route('register')}}">
-            @csrf
-                <div class="form-row">
-                    <div class="col">
-                        <label for="">Email</label>
-                        <input type="text" class="form-control" placeholder="example@email.com" name="email">
-                    </div>
-                    <div class="col">
-                        <label for="">Nama Lengkap</label>
-                        <input type="text" class="form-control" placeholder="name" name="name">
-                    </div>
-                </div><br>
-
-                <div class="form-row">
-                    <div class="col">
-                        <label for="">Password</label>
-                        <input type="password" class="form-control" placeholder="Password" name="password">
-                    </div>
-                    <div class="col">
-                        <label for="">Confirm Password</label>
-                        <input type="password" class="form-control" placeholder="Confirm Password" name="c_password">
-                    </div>
-                </div><br><br>
-
-                <div class="container col-6">
-                    <button class="btn btn-block text-white" style="background-color: #4aadda;">Daftar</button>
-                </div><br>
-
-                <p class="text-center">Sudah Punya Akun ? <a href="/" style="color: #4aadda;">Masuk</a></p>
-            </form>
-
-            <br><br>
         </div>
     </div>
-
 </div>
+
 @endsection

@@ -31,7 +31,7 @@ class LoginController extends Controller
                             $user = Auth::user();
                             $id = $user->id;
                             $life = Lifeplan::all()->where('user_id', $id);
-                            return array('result'=>'true');
+                            return redirect('/dashboard');
                         }else{
                             return array('result'=>'false');
                      }
@@ -46,7 +46,7 @@ class LoginController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect('/');
+        return redirect('/login');
     }
 
     public function indexregister()
@@ -60,7 +60,6 @@ class LoginController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:8',
-            'c_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator->errors());
@@ -71,6 +70,6 @@ class LoginController extends Controller
         $user->password = bcrypt($request->get('password'));
         $user->save();
 
-        return redirect('/');
+        return redirect('/login');
     }
 }

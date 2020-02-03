@@ -1,91 +1,55 @@
 @extends('auth.main')
-
 @section('content')
 <div class="container">
-<img src="{{ asset('assets/img/brand/logo.svg') }}" class="img-fluid mx-auto d-block" alt="">
-</div><br>
+    <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin" style="margin-top: 3%;"
+        uk-grid>
 
-<!-- Card -->
-<div class="container d-flex justify-content-center">
+        <div class="uk-flex-last@s uk-box-shadow-large uk-padding uk-card-media-right uk-cover-container"
+            style="width: 710px;">
+<img src="{{asset('/new/assets/images/Group 1.png')}}" style="width: 100%;" alt="" uk-cover>
+            <canvas width="600" height="400"></canvas>
+        </div>
 
-    <div class="card shadow-lg p-3 mb-5 bg-white rounded" style="width: 25rem;">
-        <div class="card-body">
-            <h6 class="card-title text-center"><b>Selamat Datang, Sobat Dreamers</b></h6>
+        <div style="width: 400px;">
+            <div class="uk-card-body">
+                <img src="{{ asset('assets/images/Logo.png') }}" width="120" alt=""><br><br>
 
-        <form>
-                <div class="form-group ">
-                    <label for="exampleInputEmail1" style="font-size: small;"><b>Email</b></label>
-                    <input type="email" class="form-control email" name="email" id="exampleInputEmail1"  aria-describedby="emailHelp"
-                        placeholder="example@email.com" style="font-size: small;">
-                </div>
+                {{-- <div id="modal-example">
+                    <div class="uk-alert-danger" uk-alert>
+                        <a class="uk-alert-close" uk-close></a>
+                        <p>Maaf kata sandi atau email yang kamu masukan salah</p>
+                    </div>
+                </div> --}}
 
-                <div class="form-group ">
-                    <label for="exampleInputPassword1" style="font-size: small;"><b>Password</b></label>
-                    <input type="password" class="form-control password" name="password" id="exampleInputPassword1"  placeholder="xxxxxxxx"
-                        style="font-size: small;">
-                </div>
 
-                <div class="form-group form-check text-right">
-                    <p class="form-check-label" style="font-size: small;"></p>Lupa Password ?</p>
-                </div><br>
+                <h2 class="uk-card-title">Hallo Sobat Dreamers</h2>
+                <p>sudah siap untuk melakukan perjalanan<br>
+                    impianmu, Yuk jelajahi sekarang</p>
+                <a href="/login" class="text-primary"><b>Login</b></a>&nbsp;
+                <a href="/register" class="text-dark"><b>Daftar</b></a>
 
-                <div class="button">
-                    <button type="button" name="submit" class="btn btn-block text-white submit"
-                        style="background-color: #4aadda;">Login</button>
-                </div>
-            </form>
-            <br><br>
+                <br><br>
+                <form action="{{route('login')}}" method="POST">
+                    @csrf
+                    <label for="email" class="text-dark"><b>Email</b></label>
+                    <input class="form-control" type="text" name="email" placeholder="Email">
+
+                    <br>
+
+                    <label for="password" class="text-dark"><b>Password</b></label>
+                    <input class="form-control" type="password" name="password" placeholder="Password"><br>
+
+                    <div class="form-group form-check">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="form-check-label" for="exampleCheck1">Remember me</label>
+                        <a href="" class="text-dark float-right">Forgot me ?</a>
+                    </div>
+
+                    <button class="btn btn-block btn-primary" type="submit"
+                        uk-toggle="target: #modal-example">Masuk</button>
+                </form>
+            </div>
         </div>
     </div>
 </div>
-
-<p class="text-center" style="font-size: small;"><b>Belum punya akun ? <a href="{{Route('indexreg')}}"
-            class="text-primary" style="color: #4aadda;">Daftar</a></b></p>
-
-<br><br>
-
-
 @endsection
-
-@section('script')
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-<script>
-$(document).ready(function(){
-    $('.submit').on('click', function(){
-        var email = $('.email').val();
-        var password = $('.password').val();
-
-        if(email==''){
-            swal("Gagal", "Email harus diisi", "error");
-        }else if(password==''){
-            swal("Gagal", "Password harus diisi", "error");
-        }else{
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                url:'/',
-                method:'POST',
-                data:{'email':email,
-                    'password':password
-            }, success:function(response){
-
-               if(response["result"]=="false"){
-                swal("Gagal", "Password salah", "error");
-               }else if(response["result"]=="true"){
-                swal("Berhasil", "Login Berhasil", "success");
-                window.setTimeout(function(){window.location.href="/dashboard"},1500);
-               }else if(response["result"]=="notfound"){
-                swal("Gagal", "Email Tidak ditemukan", "error");
-               }
-            }
-            });
-        }
-    });
-});
-</script>
-@endsection
-

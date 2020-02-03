@@ -11,7 +11,7 @@
 |
 */
 
-
-
+Route::view('/test','main2');
+Route::view('/','landing');
 require 'dashboard.php';
 

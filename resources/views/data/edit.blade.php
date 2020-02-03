@@ -1,13 +1,15 @@
-@extends('main')
+@extends('main2')
 
 @section('content')
+<div class="main-content">
+    <div class="container">
 <div class="row">
     <div class="col-xl-12 order-xl-1">
       <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
           <div class="row align-items-center">
-            <div class="col-8">
-              <h3 class="mb-0">LifePlan Edit</h3>
+            <div class="col-10">
+              <h3 >LifePlan Edit</h3>
             </div>
 
           </div>
@@ -159,6 +161,8 @@
         </div>
       </div>
     </div>
+</div>
+</div>
 </div>
 @endsection
 
