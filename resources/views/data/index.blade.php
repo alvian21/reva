@@ -259,7 +259,7 @@ $(document).ready(function(){
                                     'id':id
                             },
                             success:function(data){
-                                swal("Berhasil", "LifePlan berhasil dihapus", "success");
+                                swal("Berhasil", "data Impian berhasil dihapus", "success");
                                 window.setTimeout(function(){window.location.reload()}, 2000);
                             }
                         });
