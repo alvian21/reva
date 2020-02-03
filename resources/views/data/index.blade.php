@@ -282,7 +282,7 @@ $(document).ready(function(){
                     'id':id,
                     'cek':cek},
                 success:function(response){
-                    swal("Berhasil", "LifePlan berhasil diubah", "success");
+                    swal("Berhasil", "data Impian berhasil diubah", "success");
                     window.setTimeout(function(){window.location.reload()}, 1500);
                 }
             });
