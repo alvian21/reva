@@ -245,7 +245,7 @@ $(document).ready(function(){
                 var id = $(this).data('id');
                 swal({
                     title: "Apa kamu yakin?",
-                    text: "Setelah dihapus, Anda tidak akan dapat memulihkan FilePLan ini!",
+                    text: "Setelah dihapus, Anda tidak akan dapat memulihkan data Impian ini!",
                     icon: "warning",
                     buttons: true,
                     dangerMode: true,
