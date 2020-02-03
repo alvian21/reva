@@ -6,14 +6,14 @@
     CSS INDEX
     ===================
 
-    01.COMMON 
+    01.COMMON
     02.HEADER
     04.SERVICES
     11.FOOTER
 
 -----------------------------------------------------------------------------------*/
 /*===========================
-     01.COMMON css 
+     01.COMMON css
 ===========================*/
 @import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
 body {
@@ -29,6 +29,12 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
+
+.active{
+    color: #2d6cdf;
+    background-color: #ebf1fc;
+
+}
 
 img {
   max-width: 100%; }
@@ -477,7 +483,7 @@ p {
     transform: rotate(-130deg); } }
 
 /*===========================
-      02.HEADER css 
+      02.HEADER css
 ===========================*/
 /*===== NAVBAR =====*/
 .navbar-area {
@@ -727,8 +733,8 @@ p {
 .navbar-btn .btn_login {
   height: 45px;
   line-height: 16px;
-    /* background: -webkit-linear-gradient(left, #fe8464 0%, #fe6e9a 50%, #fe8464 100%); 
-  background: -o-linear-gradient(left, #fe8464 0%, #fe6e9a 50%, #fe8464 100%); 
+    /* background: -webkit-linear-gradient(left, #fe8464 0%, #fe6e9a 50%, #fe8464 100%);
+  background: -o-linear-gradient(left, #fe8464 0%, #fe6e9a 50%, #fe8464 100%);
    background: linear-gradient(to right, #fe8464 0%, #fe6e9a 50%, #fe8464 100%);  */
    border: 2px solid #4AADDA;
    border-radius: 4px;
@@ -803,7 +809,7 @@ p {
 
 
 /*===========================
-      04.SERVICES css 
+      04.SERVICES css
 ===========================*/
 .single-services {
   background-color: #fff;
@@ -902,11 +908,11 @@ p {
   transition: 0.3s;
   width: 380px;
   height: 424px;
-  text-align: center;  
+  text-align: center;
   margin-left: 10%;
 }
 
-.card 
+.card
 h4{ text-align: center;
     margin-top: 25%;
 }
@@ -932,12 +938,12 @@ h4{ text-align: center;
 
 
 /*===========================
-       11.FOOTER  css 
+       11.FOOTER  css
 ===========================*/
 .footer-area {
   background-position: top center;
   position: relative;
-  z-index: 5; 
+  z-index: 5;
   margin-top: auto;}
 
 .footer-area::before {

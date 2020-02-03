@@ -23,7 +23,8 @@
                 <a href="/register" class="text-primary"><b>Daftar</b></a>
 
                 <br><br>
-                <form action="">
+                <form action="{{Route('register')}}" method="POST">
+                    @csrf
                     <label for="email" class="text-dark"><b>Nama</b></label>
                     <input class="form-control" type="text" name="name" placeholder="Nama">
                     <br>

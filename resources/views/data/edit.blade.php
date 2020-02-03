@@ -8,9 +8,7 @@
       <div class="card bg-secondary shadow">
         <div class="card-header bg-white border-0">
           <div class="row align-items-center">
-            <div class="col-10">
-              <h3 >LifePlan Edit</h3>
-            </div>
+              <h3 >Impian Edit</h3>
 
           </div>
         </div>
@@ -21,7 +19,7 @@
               <div class="row">
                 <div class="col-lg-6">
                   <div class="form-group focused">
-                    <label class="form-control-label" for="namalifeplan">Nama LifePlan</label>
+                    <label class="form-control-label" for="namalifeplan">Nama Impian</label>
                     <input type="text" id="namalifeplan" class="form-control form-control-alternative" required value="{{ $data->name }}" >
                   </div>
                 </div>
@@ -83,7 +81,7 @@
                 <thead class="report-header">
                     <tr>
                         <th colspan="2">
-                     LifePlan
+                     Impian
                         </th>
                     <th></th>
 
@@ -92,7 +90,7 @@
                 <tbody>
                         <tr>
                               <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
-                                  Nama LifePlan
+                                  Nama Impian
                                 </td>
                                 <td class="report-subtotal text-right" id="assets-type-1-total-data">
                                 </td>
@@ -215,6 +213,7 @@ $(document).ready(function(){
                 var month = $('#month').val();
                 var biaya = $('#biaya').val();
                 var nama = $('#namalifeplan').val();
+                var id = $('#id').val();
                 if(nama == ''){
                     swal("Gagal", "Isi form nama", "error");
                 }else if(month == ''){
@@ -225,13 +224,15 @@ $(document).ready(function(){
                 else{
                     ajax();
                 $.ajax({
-                    url: '/dashboard/lifeplan/hitung',
+                    url: '/dashboard/data/hitung',
                     method: 'POST',
                     data: {
                         'hitung':1,
                         'nama':nama,
                         'biaya':biaya,
                         'bulan':bulan,
+                        'date':date,
+                        'id':id
                     },
                     success:function(data){
                         hasil = data;
@@ -257,19 +258,20 @@ $(document).ready(function(){
                     }
                 });
        }
-       $( '#biaya' ).mask('000.000.000', {reverse: true});
+       $( '#biaya' ).mask('000.000.000.000', {reverse: true});
 
        $('#simpanlife').on('click', function() {
 
                 ajax();
                 $.ajax({
-                    url: '/dashboard/lifeplan/save',
+                    url: '/dashboard/data/update',
                     method: 'POST',
                     data: hasil,
                     success:function(data){
                         $('#formlifeplan')[0].reset();
                         $('#exampleModal').modal('hide');
-                        swal("Success", "LifePlan Berhasil di Simpan", "success");
+                        swal("Success", "Impianku Berhasil di Simpan", "success");
+                        window.setTimeout(function(){window.location.href="/dashboard/data"}, 2000);
                     }
                 });
        });

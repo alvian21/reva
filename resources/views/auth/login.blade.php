@@ -14,13 +14,23 @@
             <div class="uk-card-body">
                 <img src="{{ asset('assets/images/Logo.png') }}" width="120" alt=""><br><br>
 
-                {{-- <div id="modal-example">
+                @if($errors->any())
+                <div id="modal-example">
                     <div class="uk-alert-danger" uk-alert>
                         <a class="uk-alert-close" uk-close></a>
-                        <p>Maaf kata sandi atau email yang kamu masukan salah</p>
+                        <p>  {{$errors->first()}}</p>
                     </div>
-                </div> --}}
-
+                </div>
+                
+                @endif
+                @if(session('fail'))
+                <div id="modal-example">
+                    <div class="uk-alert-danger" uk-alert>
+                        <a class="uk-alert-close" uk-close></a>
+                        <p> {{session('fail')}}</p>
+                    </div>
+                </div>
+                    @endif
 
                 <h2 class="uk-card-title">Hallo Sobat Dreamers</h2>
                 <p>sudah siap untuk melakukan perjalanan<br>

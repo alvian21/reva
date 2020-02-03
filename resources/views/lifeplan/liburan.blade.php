@@ -67,7 +67,7 @@
               <div class="card-title"><h5 class="text-dark text-center" style="margin-top: 3%;">Selangkah lagi nih untuk mewujudkan impian mu</h5></div>
               <div class="card-body">
 
-                  <form  id="formlifeplan">
+                  <form  id="formimpianku">
                       <div class="form-row">
                         <div class="col">
                           <img src="{{ asset('new/assets/img/icon-liburan-01.svg') }}" width="400" style="margin-left: 5%;" class="img-fluid" alt="">
@@ -94,7 +94,7 @@
                   </div><br>
               </form>
 
-              <a href="impian-home.html" class="btn btn-lg btn-outline-primary">Kembali</a>
+              <a href="/dashboard/lifeplan" class="btn btn-lg btn-outline-primary">Kembali</a>
               <button class="btn btn-lg btn-primary float-right" id="hitung" data-id="hitung">Wujudkan</button>
 
               </div>
@@ -112,7 +112,7 @@
                 <thead class="report-header">
                     <tr>
                         <th colspan="2">
-                     LifePlan
+                     impianku
                         </th>
                     <th></th>
 
@@ -121,7 +121,7 @@
                 <tbody>
                         <tr>
                               <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
-                                  Nama LifePlan
+                                  Nama impianku
                                 </td>
                                 <td class="report-subtotal text-right" id="assets-type-1-total-data">
                                 </td>
@@ -260,7 +260,7 @@ $(document).ready(function(){
                         'date':date
                     },
                     success:function(data){
-                          $('#formlifeplan')[0].reset();
+                          $('#formimpianku')[0].reset();
                         hasil = data;
                         tanggal = data['date'];
                         $('#exampleModal').modal('show');
@@ -295,7 +295,7 @@ $(document).ready(function(){
                     data: hasil,
                     success:function(data){
                         $('#exampleModal').modal('hide');
-                        swal("Success", "LifePlan Berhasil di Simpan", "success");
+                        swal("Success", "impianku Berhasil di Simpan", "success");
                     }
                 });
        });

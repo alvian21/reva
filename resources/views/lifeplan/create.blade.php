@@ -67,12 +67,12 @@
               <div class="card-title"><h5 class="text-dark text-center" style="margin-top: 3%;">Selangkah lagi nih untuk mewujudkan impian mu</h5></div>
               <div class="card-body">
 
-                  <form  id="formlifeplan">
+                  <form  id="formimpianku">
                       <div class="form-row">
 
                         <div class="col" style="margin-right: 4%; margin-left: 4%;">
-                            <label for="namalifeplan" class="text-dark"><b>Nama Impianmu</b></label>
-                            <input type="text" class="form-control" id="namalifeplan" placeholder="nama impianmu"><br>
+                            <label for="namaimpianku" class="text-dark"><b>Nama Impianmu</b></label>
+                            <input type="text" class="form-control" id="namaimpianku" placeholder="nama impianmu"><br>
                             <label for="" class="text-dark"><b>Biaya yang kamu tempuh ? </b></label>
                             <input type="text" class="form-control" id="biaya" placeholder="Rp.100.000"><br>
 
@@ -93,7 +93,7 @@
                   </div><br>
               </form>
 
-              <a href="impian-home.html" class="btn btn-lg btn-outline-primary">Kembali</a>
+              <a href="/dashboard/lifeplan" class="btn btn-lg btn-outline-primary">Kembali</a>
               <button class="btn btn-lg btn-primary float-right" id="hitung" data-id="hitung">Wujudkan</button>
 
               </div>
@@ -111,7 +111,7 @@
                 <thead class="report-header">
                     <tr>
                         <th colspan="2">
-                     LifePlan
+                     impianku
                         </th>
                     <th></th>
 
@@ -120,7 +120,7 @@
                 <tbody>
                         <tr>
                               <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
-                                  Nama LifePlan
+                                  Nama impianku
                                 </td>
                                 <td class="report-subtotal text-right" id="assets-type-1-total-data">
                                 </td>
@@ -238,7 +238,7 @@ $(document).ready(function(){
        $('#hitung').on('click', function(){
                 var month = $('#month').val();
                 var biaya = $('#biaya').val();
-                var nama = $('#namalifeplan').val();
+                var nama = $('#namaimpianku').val();
                 if(nama == ''){
                     swal("Gagal", "Isi form nama", "error");
                 }else if(month == ''){
@@ -259,7 +259,7 @@ $(document).ready(function(){
                         'date':date
                     },
                     success:function(data){
-                          $('#formlifeplan')[0].reset();
+                          $('#formimpianku')[0].reset();
                         hasil = data;
                         tanggal = data['date'];
                         $('#exampleModal').modal('show');
@@ -295,7 +295,7 @@ $(document).ready(function(){
                     data: hasil,
                     success:function(data){
                         $('#exampleModal').modal('hide');
-                        swal("Success", "LifePlan Berhasil di Simpan", "success");
+                        swal("Success", "impianku Berhasil di Simpan", "success");
                     }
                 });
        });

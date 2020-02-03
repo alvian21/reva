@@ -14,7 +14,7 @@
         <thead class="report-header">
             <tr>
                 <th colspan="2">
-             Detail LifePlan
+             Detail Impianku
                 </th>
             <th></th>
 

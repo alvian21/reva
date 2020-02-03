@@ -10,6 +10,8 @@ Route::group(['prefix' => 'dashboard',
     Route::get('/datanew','DataController@newindex')->name('newdata');
     Route::get('/','DashboardController@index')->name('dashboard');
     Route::get('/data','DataController@newindex')->name('data');
+    Route::post('/data/update','DataController@getUpdate');
+    Route::post('/data/hitung','DataController@hitung');
     Route::get('/data/{id}/detail','DataController@detail')->name('detail');
     Route::get('/data/{id}/edit','DataController@getEdit')->name('editdata');
     Route::get('/data/delete','DataController@delete');

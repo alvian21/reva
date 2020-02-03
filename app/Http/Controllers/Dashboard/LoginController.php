@@ -22,7 +22,13 @@ class LoginController extends Controller
     }
 
     public function login(Request $request)
-    {
+    {  $validator = Validator::make($request->all(), [
+        'email' => 'required|email',
+        'password' => 'required|min:8',
+    ]);
+    if ($validator->fails()) {
+        return redirect()->back()->withErrors($validator->errors());
+    }
         $email = $request->get('email');
         $password = $request->get('password');
         $data = User::where('email',$email)->first();
@@ -33,10 +39,10 @@ class LoginController extends Controller
                             $life = Lifeplan::all()->where('user_id', $id);
                             return redirect('/dashboard');
                         }else{
-                            return array('result'=>'false');
+                            return redirect('/login')->with('fail','Password Salah');
                      }
         }else{
-            return array('result'=>'notfound');
+            return  redirect('/login')->with('fail','Email Tidak Ditemukan');
         }
 
 
