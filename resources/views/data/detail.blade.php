@@ -29,7 +29,7 @@
 
             <tr>
                   <td class="report-subtotal text-left regular-text data-col-half" colspan="2">
-                      Nama LifePlan
+                      Nama Impian
                     </td>
                     <td class="report-subtotal text-right" id="assets-type-1-total-data">
                     </td>
